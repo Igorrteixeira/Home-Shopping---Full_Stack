@@ -5,13 +5,12 @@ import { ICreateOrderDTO, IUpdateOrderDTO } from "../models/ShoppingOrder";
 export class ShoppingOrderController {
   constructor(private shoppingOrderBusiness: ShoppingOrderBusiness) {}
 
-  createList = async (req: Request, res: Response) => {
+  createOrder = async (req: Request, res: Response) => {
     try {
       const input: ICreateOrderDTO = {
         token: req.headers.authorization,
         userName: req.body.userName,
         deliveryDate: req.body.deliveryDate,
-        listId: req.body.listId,
       };
       const response = await this.shoppingOrderBusiness.createOrder(input);
       res.status(201).send({ result: response });
@@ -20,7 +19,7 @@ export class ShoppingOrderController {
     }
   };
 
-  getList = async (req: Request, res: Response) => {
+  getOrder = async (req: Request, res: Response) => {
     try {
       const token = req.headers.authorization;
       const response = await this.shoppingOrderBusiness.getOrder(token);
@@ -30,12 +29,12 @@ export class ShoppingOrderController {
     }
   };
 
-  updateList = async (req: Request, res: Response) => {
+  updateOrder = async (req: Request, res: Response) => {
     try {
       const input: IUpdateOrderDTO = {
         token: req.headers.authorization,
         deliveryDate: req.body.deliveryDate,
-        listId: req.body.listId,
+    
       };
       const response = await this.shoppingOrderBusiness.updateOrder(input);
       res.status(201).send({ result: response });

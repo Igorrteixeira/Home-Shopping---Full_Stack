@@ -19,7 +19,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:3003/shopping-list/localhost:3003/show/create
+POST http://localhost:3003/shopping-list/localhost:3003/create
 Authorization: {{login.response.body.token}}
 Content-Type: application/json
 
@@ -30,7 +30,3 @@ Content-Type: application/json
 
 }
 
-token:string,
-    userName:string,
-    deliveryDate:string,
-    shoppingList:string[],

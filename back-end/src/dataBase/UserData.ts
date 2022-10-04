@@ -2,7 +2,7 @@ import { OUserDTO, User } from "../models/User";
 import { DataBase } from "./DataBase";
 
 export class UserData extends DataBase {
-  public static TABLE_USER = "User_lama";
+  public static TABLE_USER = "Shopper_user";
 
   signupDB = async (input: User) => {
     await this.getConnection().from(UserData.TABLE_USER).insert({

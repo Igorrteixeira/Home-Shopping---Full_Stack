@@ -11,7 +11,6 @@ export class ShoppingOrderData extends DataBase {
             id:input.getId(),
             user_name:input.getUserName(),
             delivey_date:input.getDeliveryDate(),
-            list_id:input.getListId(),
             user_id:input.getUserId() 
         })
         return "Order registered successfully"

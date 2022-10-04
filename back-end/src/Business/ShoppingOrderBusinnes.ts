@@ -16,11 +16,11 @@ export class ShoppingOrderBusiness {
     ) {}
 
     createOrder = async (input:ICreateOrderDTO) =>{
-        const {token,userName,deliveryDate,listId} = input
+        const {token,userName,deliveryDate} = input
         const validToken = this.autheticator.getTokenData(token)
         const validUser = await this.userData.getByIdDb(validToken.id) 
 
-        if(!token || !userName || !deliveryDate || !listId){
+        if(!token || !userName || !deliveryDate){
             throw new CustomError(422,"Enter all parameters");    
         }
 
@@ -32,7 +32,7 @@ export class ShoppingOrderBusiness {
         // const dateList = deliveryDate.split("/")
         // if(correctDate)
         const id = this.generateId.generateId()
-        const newOrder = new ShoppingOrder(id,userName,deliveryDate,listId,validToken.id)
+        const newOrder = new ShoppingOrder(id,userName,deliveryDate,validToken.id)
         const response = await this.shoppingOrderData.createShoppingOrder(newOrder)
         return response
     }
