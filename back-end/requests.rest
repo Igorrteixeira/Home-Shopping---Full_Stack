@@ -16,3 +16,21 @@ Content-Type: application/json
    "email":"caramelo@gmail.com",
    "password":"123456"
 }
+
+###
+
+POST http://localhost:3003/shopping-list/localhost:3003/show/create
+Authorization: {{login.response.body.token}}
+Content-Type: application/json
+
+{
+   "userName":"teste",
+   "deliveryDate":"04/10/2022",
+   "shoppingList":[{"id":16,"name":"AZEITE  PORTUGUÊS EXTRA VIRGEM GALLO 500ML","price":20.49,}]
+
+}
+
+token:string,
+    userName:string,
+    deliveryDate:string,
+    shoppingList:string[],

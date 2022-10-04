@@ -21,4 +21,12 @@ export class UserData extends DataBase {
       .where({ email });
     return result;
   };
+
+  getByIdDb = async (id: string): Promise<OUserDTO[]> => {
+    const result: OUserDTO[] = await this.getConnection()
+      .from(UserData.TABLE_USER)
+      .select("*")
+      .where({ id });
+    return result;
+}
 }
