@@ -1,0 +1,10 @@
+
+POST http://localhost:3003/character
+Content-Type: application/json
+
+{
+   "name":"iii",
+  
+}
+
+###
