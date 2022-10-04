@@ -1,8 +1,11 @@
 import app from "./controller/app";
 import { shoppingListRouter } from "./router/RouterShoppingList";
+import {  shoppingOrderRouter } from "./router/RouterShoppingOrder";
 import { userRouter } from "./router/RouterUser";
 
 
 app.use("/user",userRouter)
 
-app.use("/shopping-list",shoppingListRouter)
+app.use("/Order",shoppingOrderRouter)
+
+app.use("/list",shoppingListRouter)

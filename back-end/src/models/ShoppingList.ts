@@ -21,3 +21,18 @@ export interface ICreateListDTO{
     token:string,
     productId:string
 }
+
+export interface IDeleteListDTO{
+    token:string,
+    productId:string
+}
+export interface IDeleteListDB{
+    id_product:string,
+    user_id:string  
+}
+
+export interface OShoppingListDTO{
+    id:string,
+    id_product:string,
+    user_id:string
+}

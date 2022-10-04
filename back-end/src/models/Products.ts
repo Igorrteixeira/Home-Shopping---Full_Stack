@@ -18,3 +18,9 @@ export class Products {
         return this.qtyStock
     }
 }
+export interface OProductsDTO {
+    id:number,
+    name:string,
+    price:number,
+    qty_stock:number
+}

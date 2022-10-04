@@ -3,8 +3,8 @@ POST http://localhost:3003/user/signup
 Content-Type: application/json
 
 {
-   "name":"caramelo",
-   "email":"caramelo@gmail.com",
+   "name":"igor",
+   "email":"igor@gmail.com",
    "password":"123456"
 }
 ###
@@ -13,7 +13,7 @@ POST http://localhost:3003/user/login
 Content-Type: application/json
 
 {
-   "email":"caramelo@gmail.com",
+   "email":"igor@gmail.com",
    "password":"123456"
 }
 
@@ -26,7 +26,23 @@ Content-Type: application/json
 {
    "userName":"teste",
    "deliveryDate":"04/10/2022",
-   "shoppingList":[{"id":16,"name":"AZEITE  PORTUGUÊS EXTRA VIRGEM GALLO 500ML","price":20.49,}]
+   
 
 }
+
+### LIST
+POST http://localhost:3003/list/create/19
+Authorization: {{login.response.body.token}}
+Content-Type: application/json
+
+###
+GET http://localhost:3003/list
+Authorization: {{login.response.body.token}}
+Content-Type: application/json
+
+###
+
+DELETE  http://localhost:3003/list/18
+Authorization: {{login.response.body.token}}
+Content-Type: application/json
 
