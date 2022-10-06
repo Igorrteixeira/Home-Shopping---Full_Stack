@@ -17,18 +17,24 @@ Content-Type: application/json
    "password":"123456"
 }
 
-###
 
-POST http://localhost:3003/shopping-list/localhost:3003/create
+
+### Order
+
+POST http://localhost:3003/order/create
 Authorization: {{login.response.body.token}}
 Content-Type: application/json
 
 {
    "userName":"teste",
-   "deliveryDate":"04/10/2022",
-   
-
+   "deliveryDate":"2022-10-04"
 }
+
+###
+GET http://localhost:3003/order
+Authorization: {{login.response.body.token}}
+
+
 
 ### LIST
 POST http://localhost:3003/list/create/19

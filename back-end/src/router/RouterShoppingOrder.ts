@@ -1,8 +1,8 @@
 import { Router } from "express";
 import { ShoppingOrderBusiness } from "../Business/ShoppingOrderBusinnes";
 import { ShoppingOrderController } from "../controller/ShoppingOrderController";
+import { ProductsData } from "../dataBase/ProductsData";
 import { ShoppingOrderData } from "../dataBase/ShoppingOrderData";
-
 import { UserData } from "../dataBase/UserData";
 import { Autheticator } from "../services/Authenticator";
 import { GenerateId } from "../services/GenerateId";
@@ -16,7 +16,10 @@ export const shoppingOrderController = new ShoppingOrderController(
         new UserData(),
         new GenerateId(),
         new ShoppingOrderData(),
+        new ProductsData(),
     )
 )
 
 shoppingOrderRouter.post("/create",shoppingOrderController.createOrder)
+
+shoppingOrderRouter.get("",shoppingOrderController.getOrder)

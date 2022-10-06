@@ -1,8 +1,10 @@
+import { ProductsData } from "../dataBase/ProductsData";
 import { ShoppingOrderData } from "../dataBase/ShoppingOrderData";
 import { UserData } from "../dataBase/UserData";
 import { CustomError } from "../error/CustomError";
 import { ICreateOrderDTO, IUpdateOrderDTO, ShoppingOrder } from "../models/ShoppingOrder"
 import { Autheticator } from "../services/Authenticator";
+import { CorrectDate } from "../services/CorrectDate";
 
 import { GenerateId } from "../services/GenerateId";
 
@@ -12,14 +14,15 @@ export class ShoppingOrderBusiness {
         private autheticator:Autheticator,
         private userData:UserData,
         private generateId:GenerateId,
-        private shoppingOrderData:ShoppingOrderData
+        private shoppingOrderData:ShoppingOrderData,
+        private productData:ProductsData,
     ) {}
 
     createOrder = async (input:ICreateOrderDTO) =>{
         const {token,userName,deliveryDate} = input
         const validToken = this.autheticator.getTokenData(token)
         const validUser = await this.userData.getByIdDb(validToken.id) 
-
+        
         if(!token || !userName || !deliveryDate){
             throw new CustomError(422,"Enter all parameters");    
         }
@@ -27,10 +30,7 @@ export class ShoppingOrderBusiness {
         if(!validUser){
             throw new CustomError(401,"not authorized invalid token")
         }
-        // const currentDate = new Date().toLocaleDateString("pt-BR");
         
-        // const dateList = deliveryDate.split("/")
-        // if(correctDate)
         const id = this.generateId.generateId()
         const newOrder = new ShoppingOrder(id,userName,deliveryDate,validToken.id)
         const response = await this.shoppingOrderData.createShoppingOrder(newOrder)
@@ -38,7 +38,22 @@ export class ShoppingOrderBusiness {
     }
 
     getOrder = async (token:string) => {
+        const validToken = this.autheticator.getTokenData(token)
+        if(!token){
+            throw new CustomError(422,"Enter all parameters");    
+        }
+        if(!validToken){
+            throw new CustomError(401,"not authorized invalid token")
+        }
+        const response = await this.shoppingOrderData.getShoppingOrder(validToken.id)
 
+        // const formatDate = response.map(shoppingOrder =>{
+        //     const newDate = new CorrectDate().currentDateFormatted(shoppingOrder.)
+        //     shoppingOrder.delivery_date = newDate
+        //     return shoppingOrder
+
+        // })
+        return response
     }
 
     updateOrder  = async (input:IUpdateOrderDTO) => {

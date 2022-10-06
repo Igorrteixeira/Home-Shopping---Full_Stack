@@ -12,5 +12,9 @@ export class ProductsData extends DataBase {
       return response
    }
 
+   updateProducts = async () =>{
+      
+   }
+
 
 }
