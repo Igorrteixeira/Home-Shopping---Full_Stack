@@ -4,7 +4,7 @@ import { DataBase } from "./DataBase";
 export class UserData extends DataBase {
   public static TABLE_USER = "Shopper_user";
 
-  signupDB = async (input: User) => {
+  signupDB = async (input: User): Promise<string> => {
     await this.getConnection().from(UserData.TABLE_USER).insert({
       id: input.getId(),
       name: input.getName(),
@@ -12,6 +12,7 @@ export class UserData extends DataBase {
       password: input.getPassword(),
       roles: input.getRoles(),
     });
+    return "successfully created";
   };
 
   getEmailDb = async (email: string): Promise<OUserDTO[]> => {
@@ -28,5 +29,5 @@ export class UserData extends DataBase {
       .select("*")
       .where({ id });
     return result;
-}
+  };
 }

@@ -1,4 +1,5 @@
 import { ProductsData } from "../dataBase/ProductsData";
+import { ShoppingListData } from "../dataBase/ShoppingListData";
 import { ShoppingOrderData } from "../dataBase/ShoppingOrderData";
 import { UserData } from "../dataBase/UserData";
 import { CustomError } from "../error/CustomError";
@@ -16,6 +17,7 @@ export class ShoppingOrderBusiness {
         private generateId:GenerateId,
         private shoppingOrderData:ShoppingOrderData,
         private productData:ProductsData,
+        private shoppingListData:ShoppingListData,
     ) {}
 
     createOrder = async (input:ICreateOrderDTO) =>{
@@ -23,17 +25,21 @@ export class ShoppingOrderBusiness {
         const validToken = this.autheticator.getTokenData(token)
         const validUser = await this.userData.getByIdDb(validToken.id) 
         
-        if(!token || !userName || !deliveryDate){
+        if(!token || !userName || !deliveryDate ){
             throw new CustomError(422,"Enter all parameters");    
         }
 
         if(!validUser){
             throw new CustomError(401,"not authorized invalid token")
         }
-        
         const id = this.generateId.generateId()
         const newOrder = new ShoppingOrder(id,userName,deliveryDate,validToken.id)
         const response = await this.shoppingOrderData.createShoppingOrder(newOrder)
+
+
+
+        await this.shoppingListData.updateList(validToken.id,id)
+
         return response
     }
 

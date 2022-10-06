@@ -10,8 +10,8 @@ export class ShoppingOrderController {
       const input: ICreateOrderDTO = {
         token: req.headers.authorization,
         userName: req.body.userName,
-        deliveryDate: req.body.deliveryDate ,
-      }
+        deliveryDate: req.body.deliveryDate,
+      };
       const response = await this.shoppingOrderBusiness.createOrder(input);
       res.status(201).send({ result: response });
     } catch (error) {
@@ -34,7 +34,6 @@ export class ShoppingOrderController {
       const input: IUpdateOrderDTO = {
         token: req.headers.authorization,
         deliveryDate: req.body.deliveryDate,
-    
       };
       const response = await this.shoppingOrderBusiness.updateOrder(input);
       res.status(201).send({ result: response });

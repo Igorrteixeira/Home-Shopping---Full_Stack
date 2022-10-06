@@ -26,8 +26,9 @@ Authorization: {{login.response.body.token}}
 Content-Type: application/json
 
 {
-   "userName":"teste",
-   "deliveryDate":"2022-10-04"
+   "userName":"br",
+   "deliveryDate":"2022-10-10"
+
 }
 
 ###
@@ -37,7 +38,7 @@ Authorization: {{login.response.body.token}}
 
 
 ### LIST
-POST http://localhost:3003/list/create/19
+POST http://localhost:3003/list/create/20
 Authorization: {{login.response.body.token}}
 Content-Type: application/json
 
@@ -51,4 +52,19 @@ Content-Type: application/json
 DELETE  http://localhost:3003/list/18
 Authorization: {{login.response.body.token}}
 Content-Type: application/json
+
+### CART --------------------------------------------------
+
+# POST http://localhost:3003/cart/create
+# Authorization: {{login.response.body.token}}
+# Content-Type: application/json
+
+# {
+#    "listId":["43169b73-e24f-4af2-a087-a8f60a9f06de"]
+# }
+
+# ###
+# GET http://localhost:3003/cart
+# Authorization: {{login.response.body.token}}
+
 

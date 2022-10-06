@@ -2,6 +2,7 @@ import { Router } from "express";
 import { ShoppingOrderBusiness } from "../Business/ShoppingOrderBusinnes";
 import { ShoppingOrderController } from "../controller/ShoppingOrderController";
 import { ProductsData } from "../dataBase/ProductsData";
+import { ShoppingListData } from "../dataBase/ShoppingListData";
 import { ShoppingOrderData } from "../dataBase/ShoppingOrderData";
 import { UserData } from "../dataBase/UserData";
 import { Autheticator } from "../services/Authenticator";
@@ -17,9 +18,10 @@ export const shoppingOrderController = new ShoppingOrderController(
         new GenerateId(),
         new ShoppingOrderData(),
         new ProductsData(),
+        new ShoppingListData()
+        
     )
 )
 
 shoppingOrderRouter.post("/create",shoppingOrderController.createOrder)
-
 shoppingOrderRouter.get("",shoppingOrderController.getOrder)
