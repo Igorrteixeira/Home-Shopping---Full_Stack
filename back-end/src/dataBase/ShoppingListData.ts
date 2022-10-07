@@ -11,6 +11,7 @@ export class ShoppingListData extends DataBase {
       id: input.getId(),
       id_product: input.getProductId(),
       user_id: input.getUserId(),
+      quantity: input.getQuantity()
     });
     return "successfully inserted";
   };
@@ -25,7 +26,9 @@ export class ShoppingListData extends DataBase {
         "Shopper_products.name",
         "Shopper_products.price",
         "Shopper_products.qty_stock",
-        "Shopper_shopping_list.order_id"
+        "Shopper_shopping_list.order_id",
+        "Shopper_shopping_list.quantity",
+        
       )
       .innerJoin(
         "Shopper_products",
@@ -33,16 +36,6 @@ export class ShoppingListData extends DataBase {
         "Shopper_shopping_list.id_product"
         )
       .where("user_id", `${userId}`);
-    return response;
-  };
-
-  getProduct = async (input: IDeleteListDB): Promise<OChecksListDTO[]> => {
-    const { id, user_id } = input;
-    const response: OChecksListDTO[] = await this.getConnection()
-      .from(ShoppingListData.TABLE_LIST)
-      .select()
-      .where({ id })
-      .andWhere({ user_id });
     return response;
   };
 
@@ -54,6 +47,16 @@ export class ShoppingListData extends DataBase {
       .where({ id })
       .andWhere({ user_id });
     return "successfully deleted";
+  };
+
+  updateQtyList = async (quantity:number,id:string ) => {
+    await this.getConnection()
+      .from(ShoppingListData.TABLE_LIST)
+      .update({
+        quantity,
+      })
+      .where({id})
+      return "successfully"
   };
 
   updateList = async (id: string, idOrder: string) => {

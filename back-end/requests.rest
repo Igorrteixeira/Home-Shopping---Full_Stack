@@ -17,8 +17,6 @@ Content-Type: application/json
    "password":"123456"
 }
 
-
-
 ### ORDER ------------------------------------------
 
 POST http://localhost:3003/order/create
@@ -36,7 +34,7 @@ GET http://localhost:3003/order
 Authorization: {{login.response.body.token}}
 
 ### LIST ----------------------------------------------
-POST http://localhost:3003/list/create/16
+POST http://localhost:3003/list/create/29
 Authorization: {{login.response.body.token}}
 Content-Type: application/json
 
@@ -47,7 +45,7 @@ Content-Type: application/json
 
 ###
 
-DELETE  http://localhost:3003/list/4e86d927-dfc2-4eaa-bb53-751234c77eef
+DELETE  http://localhost:3003/list/b7a162e4-c387-43e0-ad8b-3857515644c7
 Authorization: {{login.response.body.token}}
 Content-Type: application/json
 

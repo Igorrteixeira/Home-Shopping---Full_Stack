@@ -25,7 +25,8 @@ export class ShoppingOrderData extends DataBase {
         "delivery_date",
         "Shopper_products.name",
         "price",
-        "qty_stock"
+        "qty_stock",
+        "quantity"
       )
       .innerJoin(
         "Shopper_shopping_Order",

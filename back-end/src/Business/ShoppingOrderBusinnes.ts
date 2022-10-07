@@ -42,12 +42,12 @@ export class ShoppingOrderBusiness {
         const removeStock = await this.shoppingListData.getListById(userId)
         for (const produto of removeStock) {
             if(produto.order_id === null){
-                produto.qty_stock = produto.qty_stock 
+                const newQuantity = produto.qty_stock - produto.quantity
                 const newStock:IRemoveStockDTO = {
                     productId:produto.id_product,
-                    qtyStock:produto.qty_stock
+                    qtyStock:newQuantity
                 }
-                const updatestock = await this.productData.updateProducts(newStock)
+                await this.productData.updateProducts(newStock)
             }       
         }
         await this.shoppingListData.updateList(userId,id)
@@ -65,13 +65,17 @@ export class ShoppingOrderBusiness {
         }
         const response = await this.shoppingOrderData.getShoppingOrder(validToken.id)
 
-        const ResponseFormatDate = response.map(shoppingOrder =>{
-            const newDate = new CorrectDate().currentDateFormatted(shoppingOrder.delivery_date)
-            shoppingOrder.delivery_date = newDate
-            return shoppingOrder
-
-        })
-        return ResponseFormatDate
+    
+        const formatOrder = response.map(order =>{
+            let totalProduct:number = 0
+            let count:number = 0
+            count = order.quantity * order.price
+            totalProduct += count
+            const newDate = new CorrectDate().currentDateFormatted(order.delivery_date)
+            order.delivery_date = newDate
+            return {order,totalProduct}
+        }) 
+        return formatOrder
     }
 
     updateOrder  = async (input:IUpdateOrderDTO) => {

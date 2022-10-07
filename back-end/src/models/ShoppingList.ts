@@ -2,7 +2,8 @@ export class ShoppingList {
   constructor(
     private id: string,
     private productId: string,
-    private userId: string
+    private userId: string,
+    private quantity: number = 1
   ) {}
 
   getId() {
@@ -13,6 +14,9 @@ export class ShoppingList {
   }
   getUserId() {
     return this.userId;
+  }
+  getQuantity() {
+    return this.quantity;
   }
 }
 
@@ -30,14 +34,9 @@ export interface IDeleteListDB {
   user_id: string;
 }
 
-export interface ICheckListDB {
-  id_product: string;
-  user_id: string;
-}
-
-export interface IRemoveStockDTO{
-  productId:string,
-  qtyStock:number
+export interface IRemoveStockDTO {
+  productId: string;
+  qtyStock: number;
 }
 
 export interface OChecksListDTO {
@@ -47,14 +46,14 @@ export interface OChecksListDTO {
 }
 
 export interface OShoppingListDTO {
+  
   id: string;
   id_product: string;
-  user_id: string,
-  name:string,
-  price:number,
-  qty_stock:number,
-  order_id:string | null
-
+  user_id: string;
+  name: string;
+  price: number;
+  qty_stock: number;
+  order_id: string | null;
+  quantity: number;
 }
-
 
