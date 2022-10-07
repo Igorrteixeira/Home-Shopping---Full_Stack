@@ -33,7 +33,7 @@ export class ShoppingListController {
     try {
       const input: IDeleteListDTO = {
         token: req.headers.authorization,
-        productId: req.params.id,
+        id: req.params.id,
       };
       const response = await this.shoppingListBusiness.deleteListBusiness(
         input

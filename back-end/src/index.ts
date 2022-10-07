@@ -1,5 +1,5 @@
 import app from "./controller/app";
-import { cartRouter } from "./router/CartProducts";
+import { productsRouter } from "./router/ProductsRouter";
 import { shoppingListRouter } from "./router/RouterShoppingList";
 import {  shoppingOrderRouter } from "./router/RouterShoppingOrder";
 import { userRouter } from "./router/RouterUser";
@@ -11,4 +11,4 @@ app.use("/order",shoppingOrderRouter)
 
 app.use("/list",shoppingListRouter)
 
-app.use("/cart",cartRouter)
+app.use("/products",productsRouter)

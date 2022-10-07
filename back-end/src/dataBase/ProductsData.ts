@@ -1,4 +1,5 @@
 import { OProductsDTO } from "../models/Products";
+import { IRemoveStockDTO } from "../models/ShoppingList";
 import { DataBase } from "./DataBase";
 
 export class ProductsData extends DataBase {
@@ -12,5 +13,19 @@ export class ProductsData extends DataBase {
     return response;
   };
 
-  updateProducts = async () => {};
+  getAllProducts = async () => {
+      const response = await this.getConnection()
+      .from(ProductsData.TABLE_PRODUCTS)
+      .select()
+      return response
+  }
+
+  updateProducts = async (input:IRemoveStockDTO) => {
+    await this.getConnection()
+    .from(ProductsData.TABLE_PRODUCTS)
+    .update({
+      qty_stock:input.qtyStock
+    })
+    .where("id",`${input.productId}`)
+  };
 }

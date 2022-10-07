@@ -19,15 +19,15 @@ Content-Type: application/json
 
 
 
-### Order
+### ORDER ------------------------------------------
 
 POST http://localhost:3003/order/create
 Authorization: {{login.response.body.token}}
 Content-Type: application/json
 
 {
-   "userName":"br",
-   "deliveryDate":"2022-10-10"
+   "userName":"igor",
+   "deliveryDate":"11/06/2022"
 
 }
 
@@ -35,10 +35,8 @@ Content-Type: application/json
 GET http://localhost:3003/order
 Authorization: {{login.response.body.token}}
 
-
-
-### LIST
-POST http://localhost:3003/list/create/20
+### LIST ----------------------------------------------
+POST http://localhost:3003/list/create/16
 Authorization: {{login.response.body.token}}
 Content-Type: application/json
 
@@ -49,22 +47,14 @@ Content-Type: application/json
 
 ###
 
-DELETE  http://localhost:3003/list/18
+DELETE  http://localhost:3003/list/4e86d927-dfc2-4eaa-bb53-751234c77eef
 Authorization: {{login.response.body.token}}
 Content-Type: application/json
 
-### CART --------------------------------------------------
+### products ----------------------------------------------
+GET http://localhost:3003/products
+Authorization: {{login.response.body.token}}
+Content-Type: application/json
 
-# POST http://localhost:3003/cart/create
-# Authorization: {{login.response.body.token}}
-# Content-Type: application/json
-
-# {
-#    "listId":["43169b73-e24f-4af2-a087-a8f60a9f06de"]
-# }
-
-# ###
-# GET http://localhost:3003/cart
-# Authorization: {{login.response.body.token}}
 
 

@@ -23,9 +23,25 @@ export interface ICreateListDTO {
 
 export interface IDeleteListDTO {
   token: string;
-  productId: string;
+  id: string;
 }
 export interface IDeleteListDB {
+  id: string;
+  user_id: string;
+}
+
+export interface ICheckListDB {
+  id_product: string;
+  user_id: string;
+}
+
+export interface IRemoveStockDTO{
+  productId:string,
+  qtyStock:number
+}
+
+export interface OChecksListDTO {
+  id: string;
   id_product: string;
   user_id: string;
 }
@@ -33,5 +49,12 @@ export interface IDeleteListDB {
 export interface OShoppingListDTO {
   id: string;
   id_product: string;
-  user_id: string;
+  user_id: string,
+  name:string,
+  price:number,
+  qty_stock:number,
+  order_id:string | null
+
 }
+
+

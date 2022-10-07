@@ -2,12 +2,7 @@ import { ProductsData } from "../dataBase/ProductsData";
 import { ShoppingListData } from "../dataBase/ShoppingListData";
 import { ShoppingOrderData } from "../dataBase/ShoppingOrderData";
 import { CustomError } from "../error/CustomError";
-import {
-  ICreateListDTO,
-  IDeleteListDB,
-  IDeleteListDTO,
-  ShoppingList,
-} from "../models/ShoppingList";
+import {ICreateListDTO,IDeleteListDB,IDeleteListDTO,ShoppingList,} from "../models/ShoppingList";
 import { Autheticator } from "../services/Authenticator";
 import { GenerateId } from "../services/GenerateId";
 
@@ -30,7 +25,7 @@ export class ShoppingListBusiness {
       throw new CustomError(401, "invalid token");
     }
     const [products] = await this.productData.getProducts(productId);
-    if (products.qty_stock < 1) {
+    if (String(products.id) === productId &&  products.qty_stock < 1) {
       throw new CustomError(404, "product is out of stock");
     }
     const id = this.generateId.generateId();
@@ -48,24 +43,23 @@ export class ShoppingListBusiness {
     if (!validtoken) {
       throw new CustomError(401, "invalid token");
     }
-
     const response = await this.shoppingListData.getListById(validtoken.id);
 
     return response;
   };
 
   deleteListBusiness = async (input: IDeleteListDTO) => {
-    const { token, productId } = input;
+    const { token, id } = input;
     const validtoken = this.autheticator.getTokenData(token);
 
-    if (!token || !productId) {
+    if (!token || !id) {
       throw new CustomError(422, "Enter all parameters");
     }
     if (!validtoken) {
       throw new CustomError(401, "invalid token");
     }
     const inputDelete: IDeleteListDB = {
-      id_product: productId,
+      id,
       user_id: validtoken.id,
     };
     const validProduct = await this.shoppingListData.getProduct(inputDelete);

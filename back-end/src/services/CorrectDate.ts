@@ -1,5 +1,5 @@
 export class CorrectDate {
-  public sendDate = (date: string) => {
+  public sendDateDB = (date: string) => {
     let newDate = date.split("/");
     return `${newDate[2]}-${newDate[1]}-${newDate[0]}`;
   };

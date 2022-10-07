@@ -10,7 +10,7 @@ export class ShoppingOrderData extends DataBase {
       .from(ShoppingOrderData.TABLE_SHOPPING_ORDER)
       .insert({
         id: input.getId(),
-        name: input.getUserName(),
+        user_name: input.getUserName(),
         delivery_date: input.getDeliveryDate(),
         user_id: input.getUserId(),
       });
@@ -21,7 +21,7 @@ export class ShoppingOrderData extends DataBase {
     const response = await this.getConnection()
       .from(ShoppingOrderData.TABLE_LIST)
       .select(
-        "Shopper_shopping_Order.name",
+        "Shopper_shopping_Order.user_name",
         "delivery_date",
         "Shopper_products.name",
         "price",
