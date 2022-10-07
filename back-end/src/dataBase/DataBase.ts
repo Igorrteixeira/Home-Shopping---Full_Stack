@@ -20,5 +20,3 @@ export class DataBase {
     return this.connection;
   }
 }
-
-
