@@ -1,12 +1,14 @@
 import React from "react";
+import {GlobalStyle } from "./global/globalStyle"
 import {GlobalProvider} from "./provider/GlobalProvider"
- 
+import {Router} from "./router/Router"
+
+
 const App = () => {
   return (
     <GlobalProvider>
-    <div >
-      <h1>app</h1>
-    </div>
+      <GlobalStyle/>
+    <Router/>
     </GlobalProvider>
   );
 }
