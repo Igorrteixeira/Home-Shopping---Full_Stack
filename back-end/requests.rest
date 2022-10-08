@@ -34,7 +34,7 @@ GET http://localhost:3003/order
 Authorization: {{login.response.body.token}}
 
 ### LIST ----------------------------------------------
-POST http://localhost:3003/list/create/29
+POST http://localhost:3003/list/create/19
 Authorization: {{login.response.body.token}}
 Content-Type: application/json
 

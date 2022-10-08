@@ -7,15 +7,15 @@ export const useRequestData = (initialData, url) => {
   const [loading, setLoading] = useState(true);
 
   const getData = async () => {
-    console.log(token)
     await axios
       .get(`${URL_BASE}${url}`, token)
       .then((res) => {
-        setData(res.data.response)
+        setData(res.data)
+        
         setLoading(false)
       })
       .catch((error) => {
-        setData(error.message)
+        setData(error.response.data)
         setLoading(false);
       });
   };

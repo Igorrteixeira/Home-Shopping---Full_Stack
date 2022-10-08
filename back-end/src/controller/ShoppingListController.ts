@@ -8,12 +8,12 @@ export class ShoppingListController {
     try {
       const input: ICreateListDTO = {
         token: req.headers.authorization,
-        productId: req.params.id,
+        productId: req.body.productId,
       };
       const response = await this.shoppingListBusiness.createListBusiness(
         input
       );
-      res.status(201).send({ result: response });
+      res.status(201).send(response);
     } catch (error) {
       res.status(error.code || 500).send(error.message || error.sqlMessage);
     }
@@ -23,7 +23,7 @@ export class ShoppingListController {
     try {
       const token = req.headers.authorization;
       const response = await this.shoppingListBusiness.getListBusiness(token);
-      res.status(200).send({ result: response });
+      res.status(200).send(response);
     } catch (error) {
       res.status(error.code || 500).send(error.message || error.sqlMessage);
     }
@@ -38,7 +38,7 @@ export class ShoppingListController {
       const response = await this.shoppingListBusiness.deleteListBusiness(
         input
       );
-      res.status(200).send({ result: response });
+      res.status(200).send(response);
     } catch (error) {
       res.status(error.code || 500).send(error.message || error.sqlMessage);
     }

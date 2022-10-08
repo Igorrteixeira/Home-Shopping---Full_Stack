@@ -35,7 +35,8 @@ export class ShoppingListData extends DataBase {
         "Shopper_products.id",
         "Shopper_shopping_list.id_product"
         )
-      .where("user_id", `${userId}`);
+      .where("user_id", `${userId}`)
+      .andWhere("order_id",null)
     return response;
   };
 
