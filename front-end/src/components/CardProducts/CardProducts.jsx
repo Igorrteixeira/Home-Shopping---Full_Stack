@@ -1,15 +1,25 @@
-import { Container, Button, Title, Price } from "./styled";
+import { Container, Button, Title, Price,ContainerButtons,Quantity } from "./styled";
+import {BsFillBagPlusFill,BsFillBagDashFill} from "react-icons/bs"
 
 
 export const CardProduct = (props) => {
-  
   return (
     <Container key={props.id}>
       <Title>{props.name}</Title>
-      <Price>R$ {props.price}</Price>
-     {props.quantity === 0 ?<Button type={"button"} onClick={props.button}>
-        Adicionar
-      </Button>:<div> <button>-</button>{props.quantity}<button>+</button></div> }
+      <Price><span>R$</span> {props.price}</Price>
+
+      {props.quantity < 1 ? (
+        <Button type={"button"} onClick={props.button}>
+          ADICIONAR
+        </Button>
+      ) : (
+        <ContainerButtons>
+          {" "}
+          <BsFillBagDashFill size={"25px"} color={"red"}/>
+          <Quantity>{props.quantity}</Quantity>
+          <BsFillBagPlusFill size={"25px"} color={"green"} onClick={props.button}/>
+        </ContainerButtons>
+      )}
     </Container>
   );
 };

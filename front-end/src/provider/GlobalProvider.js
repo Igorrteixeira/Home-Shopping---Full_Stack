@@ -1,8 +1,6 @@
 import React, {useState } from 'react'
 import {GlobalContext} from '../context/GlobalContext'
 
-
-
 export const GlobalProvider = (props) => {
 
     const [test,setTest] = useState([])

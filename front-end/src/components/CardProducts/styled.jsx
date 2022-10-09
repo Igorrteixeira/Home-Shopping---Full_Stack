@@ -9,9 +9,10 @@ export const Container = styled.div`
 
   width: 18vw;
   height: 30vh;
-  border: solid 1px black;
+  border: solid 1px #d3cece;
   border-radius: 10px;
   font-size: 14px;
+  box-shadow: 5px 5px #f3eeee;
 
   @media screen and (min-device-width: 481px) and (max-device-width: 800px) {
     width: 30vw;
@@ -24,19 +25,38 @@ export const Container = styled.div`
   }
 `;
 export const Button = styled.button`
-  margin: 5px;
-  padding: 5px 10px;
+  width: 8em;
+  margin-bottom: 10px;
+  padding: 8px 15px;
+  border: none;
+  background-color: #0e6cbf;
+  color: #ffffff;
+  border-radius: 5px;
 `;
-
+export const ContainerButtons = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+`;
+export const Quantity = styled.p`
+  font-weight: bold;
+  font-size: 18px;
+`;
 export const Title = styled.p`
   display: flex;
   align-items: center;
   word-wrap: break-word;
   margin: 6px;
   height: 20vh;
+  color: #423e3e;
 `;
 
 export const Price = styled.p`
   margin: 4px;
   height: 5vh;
+  span {
+    font-size: 20px;
+  }
 `;

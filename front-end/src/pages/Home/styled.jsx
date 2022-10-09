@@ -4,7 +4,7 @@ export const Container = styled.div``;
 
 export const Products = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(5,1fr);
   justify-items: center;
   margin: 10px;
   gap: 1em;

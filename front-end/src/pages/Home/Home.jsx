@@ -3,13 +3,22 @@ import { useRequestData } from "../../hooks/useRequestData";
 import { useNavigate } from "react-router-dom";
 import { CardProduct } from "../../components/CardProducts/CardProducts";
 import { Header } from "../../components/Header/Header";
-import { cartShopping } from "../../services/cartShoppingRequest";
+import { addCart } from "../../services/cartShoppingRequest";
+import { removeCart } from "../../services/cartShoppingRequest";
+
 
 export const Home = () => {
+    
   const navigate = useNavigate();
   const itensCart = useRequestData([], "/list");
   const productData = useRequestData([], "/products");
+  
 
+// const add = (id)=>{
+//     cartShopping(id)
+//     navigate("/home")
+// }
+  
   const listProducts = productData?.data?.map((produto) => {
     let quantity = 0;
     for (const cart of itensCart.data) {
@@ -23,7 +32,8 @@ export const Home = () => {
         name={produto.name}
         price={produto.price}
         quantity={quantity}
-        button={()=>cartShopping(produto.id)}
+        buttonAdd={()=>addCart(produto.id)}
+        buttonRemove={()=>removeCart()}
       />
     );
   });
