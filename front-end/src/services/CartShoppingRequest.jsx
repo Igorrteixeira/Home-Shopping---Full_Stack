@@ -3,6 +3,7 @@ import { token, URL_BASE } from "../constants/URL_BASE";
 
 
 export const addCart = (id) => {
+  console.log(id,token)
   const body = {
     productId: id,
   }
@@ -15,11 +16,8 @@ export const addCart = (id) => {
 };
 
 export const removeCart = (id) => {
-  const body = {
-    productId: id,
-  }
   axios
-  .delete(`${URL_BASE}/list/${id}`, body, token)
+  .delete(`${URL_BASE}/list/delete/${id}`,token)
   .then((res) => {
     alert(res.data)
   })

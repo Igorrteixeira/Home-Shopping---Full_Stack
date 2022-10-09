@@ -1,24 +1,36 @@
-import { Container } from "./styled";
+import { Container, TableProducts, Amount } from "./styled";
 import { useRequestData } from "../../hooks/useRequestData";
-import { CardProduct } from "../../components/CardProducts/CardProducts";
+import { CardListCart } from "../../components/CardListCart/CardListCart";
+import { Header } from "../../components/Header/Header";
+import { BsFillCartCheckFill } from "react-icons/bs";
 
 export const Cart = () => {
   const itensCart = useRequestData([], "/list");
-  const listaitensCart = itensCart?.data?.map((produto) => {
+  let total = 0;
+  const listaitensCart = itensCart?.data?.map((product) => {
+    total += product.total;
     return (
-      <div key={produto.list.id}>
-        <p>{produto.list.name}</p>
-        <p>{produto.list.price}</p>
-        <p>{produto.list.quantity}</p>
-        <p>{produto.total}</p>
-      </div>
+      <CardListCart
+        name={product.list.name}
+        price={product.list.price.toFixed(2)}
+        quantity={product.list.quantity}
+        total={product.total.toFixed(2)}
+      />
     );
   });
 
   return (
     <Container>
-      {listaitensCart}
-      <p>total: R$</p>
+      <Header />
+      <div>
+      <Amount>
+        <BsFillCartCheckFill /> Valor total: R$ {total.toFixed(2)}
+      </Amount>
+      <form action="">
+      </form>
+      </div>
+      
+      <TableProducts>{listaitensCart}</TableProducts>
     </Container>
   );
 };

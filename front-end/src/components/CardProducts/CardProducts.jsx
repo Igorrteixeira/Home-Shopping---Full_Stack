@@ -9,15 +9,15 @@ export const CardProduct = (props) => {
       <Price><span>R$</span> {props.price}</Price>
 
       {props.quantity < 1 ? (
-        <Button type={"button"} onClick={props.button}>
+        <Button type={"button"} onClick={props.buttonAdd}>
           ADICIONAR
         </Button>
       ) : (
         <ContainerButtons>
           {" "}
-          <BsFillBagDashFill size={"25px"} color={"red"}/>
+          <BsFillBagDashFill size={"25px"} color={"red"} onClick={props.buttonRemove}/>
           <Quantity>{props.quantity}</Quantity>
-          <BsFillBagPlusFill size={"25px"} color={"green"} onClick={props.button}/>
+          <BsFillBagPlusFill size={"25px"} color={"green"} onClick={props.buttonAdd}/>
         </ContainerButtons>
       )}
     </Container>

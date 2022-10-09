@@ -21,9 +21,11 @@ export const Home = () => {
   
   const listProducts = productData?.data?.map((produto) => {
     let quantity = 0;
+    let id = ""
     for (const cart of itensCart.data) {
       if (cart.list.id_product === produto.id) {
         quantity = cart.list.quantity;
+        id = cart.list.id
       }
     }
     return (
@@ -33,7 +35,7 @@ export const Home = () => {
         price={produto.price}
         quantity={quantity}
         buttonAdd={()=>addCart(produto.id)}
-        buttonRemove={()=>removeCart()}
+        buttonRemove={()=>removeCart(id)}
       />
     );
   });
