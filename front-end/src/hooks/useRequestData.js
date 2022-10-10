@@ -11,7 +11,6 @@ export const useRequestData = (initialData, url) => {
       .get(`${URL_BASE}${url}`, token)
       .then((res) => {
         setData(res.data)
-        
         setLoading(false)
       })
       .catch((error) => {

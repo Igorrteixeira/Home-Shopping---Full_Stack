@@ -34,9 +34,9 @@ export class ShoppingOrderBusiness {
             throw new CustomError(401,"not authorized invalid token")
         }
         
-        const newdate = new CorrectDate().sendDateDB(deliveryDate)
+        
         const id = this.generateId.generateId()
-        const newOrder = new ShoppingOrder(id,userName,newdate,userId)
+        const newOrder = new ShoppingOrder(id,userName,deliveryDate,userId)
         const response = await this.shoppingOrderData.createShoppingOrder(newOrder)
         
         const removeStock = await this.shoppingListData.getListById(userId)

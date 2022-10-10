@@ -13,3 +13,7 @@ export const goToSignup = (navigate) => {
 export const goToStock = (navigate) => {
     navigate("/stock")
 }
+
+export const goToFianlizaPuchase = (navigate) => {
+    navigate("/finalizepurchase")
+}

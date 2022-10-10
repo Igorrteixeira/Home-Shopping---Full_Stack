@@ -4,7 +4,7 @@ export const CardListCart = (props) => {
   return (
     <Container>
       <NameProduct>{props.name}</NameProduct>
-      <Value>R$ {props.price}</Value>
+      <Value>R${props.price}</Value>
       <td>{props.quantity}</td>
       <Value>R$ {props.total}</Value>
     </Container>

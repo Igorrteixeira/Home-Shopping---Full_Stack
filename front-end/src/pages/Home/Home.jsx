@@ -5,19 +5,23 @@ import { CardProduct } from "../../components/CardProducts/CardProducts";
 import { Header } from "../../components/Header/Header";
 import { addCart } from "../../services/cartShoppingRequest";
 import { removeCart } from "../../services/cartShoppingRequest";
-
+import { useEffect } from "react";
 
 export const Home = () => {
     
   const navigate = useNavigate();
   const itensCart = useRequestData([], "/list");
   const productData = useRequestData([], "/products");
-  
+  console.log(itensCart.loading)
 
 // const add = (id)=>{
 //     cartShopping(id)
 //     navigate("/home")
 // }
+
+useEffect(()=>{
+
+},[])
   
   const listProducts = productData?.data?.map((produto) => {
     let quantity = 0;
@@ -36,6 +40,7 @@ export const Home = () => {
         quantity={quantity}
         buttonAdd={()=>addCart(produto.id)}
         buttonRemove={()=>removeCart(id)}
+
       />
     );
   });

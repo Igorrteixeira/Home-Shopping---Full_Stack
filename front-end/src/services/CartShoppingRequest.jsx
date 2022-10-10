@@ -1,5 +1,6 @@
 import axios from "axios";
 import { token, URL_BASE } from "../constants/URL_BASE";
+import { useState,useEffect } from "react";
 
 
 export const addCart = (id) => {
@@ -23,3 +24,16 @@ export const removeCart = (id) => {
   })
   .catch((error) => alert(error.response.data));
 }
+
+export const Getcart = () => {
+  const[productsCart,setProductsCart] = useState([])
+    useEffect(()=>{
+    axios.get(`${URL_BASE}/list`,token).then((res)=>{
+        setProductsCart(res.data)
+        // setLoader(true)
+    }).catch((err)=> alert(err.reponse.data.message))
+},[])
+   return productsCart
+}
+
+

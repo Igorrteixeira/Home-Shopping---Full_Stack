@@ -85,6 +85,7 @@ export class ShoppingListBusiness {
 
   deleteListBusiness = async (input: IDeleteListDTO) => {
     const { token, id } = input;
+    console.log(input)
     const validtoken = this.autheticator.getTokenData(token);
     const userId = validtoken.id;
 

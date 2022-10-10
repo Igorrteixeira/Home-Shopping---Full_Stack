@@ -1,9 +1,10 @@
-import { Container } from "./styled";
+import { Container,Form } from "./styled";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import { signUp } from "../../services/userRequest";
+import {Header} from "../../components/Header/Header"
 
 export const Signup = () => {
   const navigate = useNavigate();
@@ -20,9 +21,12 @@ export const Signup = () => {
   };
 
   return (
+    <>
+    <Header/>
     <Container>
+      
       <h1>Bem vindo</h1>
-      <form onSubmit={submit}>
+      <Form onSubmit={submit}>
         <TextField
           type="text"
           id="name"
@@ -56,8 +60,9 @@ export const Signup = () => {
           required
         />
 
-        <Button type={"submit"}>Signup</Button>
-      </form>
+        <Button variant="contained" type={"submit"}>Signup</Button>
+      </Form>
     </Container>
+    </>
   );
 };

@@ -1,10 +1,11 @@
-import { Container } from "./styled";
+import { Container,Form } from "./styled";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import { goToSignup } from "../../router/Coordinator";
 import { login } from "../../services/userRequest";
+import {Header} from "../../components/Header/Header"
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -19,7 +20,8 @@ export const Login = () => {
   };
   return (
     <Container>
-      <form onSubmit={submit}>
+      <Header/>
+      <Form onSubmit={submit}>
         <TextField
           id="email"
           label="Email"
@@ -42,9 +44,9 @@ export const Login = () => {
           required
         />
 
-        <Button type={"submit"}>Login</Button>
-        <Button onClick={() => goToSignup(navigate)}>Crie uma conta</Button>
-      </form>
+        <Button variant="contained" type={"submit"}>Login</Button>
+        <Button variant="outlined" onClick={() => goToSignup(navigate)}>Crie uma conta</Button>
+      </Form>
     </Container>
   );
 };

@@ -14,7 +14,6 @@ export const CardProduct = (props) => {
         </Button>
       ) : (
         <ContainerButtons>
-          {" "}
           <BsFillBagDashFill size={"25px"} color={"red"} onClick={props.buttonRemove}/>
           <Quantity>{props.quantity}</Quantity>
           <BsFillBagPlusFill size={"25px"} color={"green"} onClick={props.buttonAdd}/>

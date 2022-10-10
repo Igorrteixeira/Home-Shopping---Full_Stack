@@ -17,7 +17,7 @@ export const NameProduct = styled.td`
 `;
 export const Value = styled.td`
   display: flex;
-  width: 15vw;
+  width: 14vw;
   justify-content: center;
   color: #41b421;
 `;

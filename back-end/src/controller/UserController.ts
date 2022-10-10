@@ -25,4 +25,5 @@ export class UserController {
       res.status(error.code).send(error.message || error.sqlMessage);
     }
   };
+
 }
