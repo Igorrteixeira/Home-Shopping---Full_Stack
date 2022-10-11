@@ -6,7 +6,7 @@ export const Products = styled.div`
   display: grid;
   grid-template-columns: repeat(5,1fr);
   justify-items: center;
-  margin: 10px;
+  margin-top: 9vh;
   gap: 1em;
 
   @media screen and (min-device-width: 481px) and (max-device-width: 800px) {

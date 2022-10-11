@@ -24,7 +24,9 @@ export const Cart = (props) => {
       <Card>
         <Product>{product.list.name}</Product>
         <Values>
-          <Price>R$ {product.list.price}</Price>
+          <Price>
+            <span>R$</span> {product.list.price}
+          </Price>
           <ContainerButtons>
             <BsFillBagDashFill
               size={"20px"}
@@ -51,14 +53,14 @@ export const Cart = (props) => {
     <>
       {props.cart === true ? (
         <Container>
-          {listCart}
-          <h2>TOTAL: R$ {amount}</h2>
           <Button
             variant="outlined"
             onClick={() => goToFianlizaPuchase(navigate)}
           >
             Finalizar
           </Button>
+          {listCart}
+          <h2>TOTAL: R$ {amount.toFixed(2)}</h2>
         </Container>
       ) : (
         ""

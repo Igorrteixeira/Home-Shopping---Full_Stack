@@ -1,7 +1,9 @@
-import { Container, StockItens, Values, TitleProduct } from "./styled";
+import { Container, StockItens, Values, TitleProduct,Indice} from "./styled";
 import { useRequestData } from "../../hooks/useRequestData";
 import { Header } from "../../components/Header/Header";
+import {AiFillCheckCircle,AiFillCloseCircle,AiFillClockCircle} from "react-icons/ai"
 
+ 
 export const Stock = () => {
   const productData = useRequestData([], "/products");
 
@@ -9,11 +11,16 @@ export const Stock = () => {
     <>
       <Header />
       <Container>
-        <h1>Controle de estoque</h1>
+        <h1>Estoque</h1>
+        <Indice>
+          <p>Em falta <AiFillCloseCircle color="red"/></p>
+          <p>Em stock <AiFillCheckCircle color="green"/></p>
+          <p>Pedir <AiFillClockCircle color="#eb5a20"/></p>
+        </Indice>
         <table>
           <StockItens>
             <TitleProduct>Produtos</TitleProduct>
-            <Values>Quantidade em estoque</Values>
+            <TitleProduct>Quantidade em estoque</TitleProduct>
           </StockItens>
           {productData?.data?.map((product) => {
             return (

@@ -2,6 +2,7 @@ import axios from "axios";
 import { token, URL_BASE } from "../constants/URL_BASE";
 import { useEffect, useContext } from "react";
 import { GlobalStateContext } from "../../src/global/GlobalStateContext";
+import Swal from "sweetalert2";
 
 export const addCart = (id) => {
   console.log(id, token);
@@ -13,7 +14,23 @@ export const addCart = (id) => {
     .then((res) => {
       Getcart();
     })
-    .catch((error) => alert(error.response.data));
+    .catch((error) => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-center",
+        showConfirmButton: false,
+        timer: 1900,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      })
+      Toast.fire({
+        icon: "error",
+        title: error.response.data,
+      });
+    });
 };
 
 export const removeCart = (id) => {
@@ -30,7 +47,6 @@ export const Getcart = () => {
       .get(`${URL_BASE}/list`, token)
       .then((res) => {
         setCart(res.data);
-        // setLoader(true)
       })
       .catch((err) => alert(err.reponse.data.message));
   }, [cart]);

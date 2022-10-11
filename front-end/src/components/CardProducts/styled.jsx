@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import fundoCard from "../../assets/img/sho.png"
+// import fundoCard from "../../assets/img/.png"
 
 export const Container = styled.div`
   display: flex;
@@ -58,13 +58,19 @@ export const Title = styled.p`
   margin: 6px;
   height: 20vh;
   color: #423e3e;
+  font-size: 14px;
 `;
 
 export const Price = styled.p`
   margin: 4px;
   height: 5vh;
+  font-size: 20px;
+  color: #1567A4;
+  font-weight: bolder;
   span {
-    font-size: 20px;
+    font-size: 14px;
+    color: #8a8e92;
+    
   }
 `;
 
