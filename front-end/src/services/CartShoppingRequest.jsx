@@ -1,41 +1,37 @@
 import axios from "axios";
 import { token, URL_BASE } from "../constants/URL_BASE";
-import { useState,useEffect } from "react";
-
+import { useEffect, useContext } from "react";
+import { GlobalStateContext } from "../../src/global/GlobalStateContext";
 
 export const addCart = (id) => {
-  console.log(id,token)
+  console.log(id, token);
   const body = {
     productId: id,
-  }
+  };
   axios
     .post(`${URL_BASE}/list/create`, body, token)
     .then((res) => {
-      
-      alert(res.data)
-      
+      Getcart();
     })
     .catch((error) => alert(error.response.data));
 };
 
 export const removeCart = (id) => {
   axios
-  .delete(`${URL_BASE}/list/delete/${id}`,token)
-  .then((res) => {
-    alert(res.data)
-  })
-  .catch((error) => alert(error.response.data));
-}
+    .delete(`${URL_BASE}/list/delete/${id}`, token)
+    .then((res) => {})
+    .catch((error) => alert(error.response.data));
+};
 
 export const Getcart = () => {
-  const[cart,setCart] = useState([])
-    useEffect(()=>{
-    axios.get(`${URL_BASE}/list`,token).then((res)=>{
-        setProductsCart(res.data)
+  const { cart, setCart } = useContext(GlobalStateContext);
+  useEffect(() => {
+    axios
+      .get(`${URL_BASE}/list`, token)
+      .then((res) => {
+        setCart(res.data);
         // setLoader(true)
-    }).catch((err)=> alert(err.reponse.data.message))
-},[productsCart])
-   return productsCart
-}
-
-
+      })
+      .catch((err) => alert(err.reponse.data.message));
+  }, [cart]);
+};

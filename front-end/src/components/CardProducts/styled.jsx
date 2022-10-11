@@ -26,11 +26,17 @@ export const Container = styled.div`
   }
 `;
 export const Button = styled.button`
-  width: 8em;
+  width: 9em;
   margin-bottom: 10px;
   padding: 8px 15px;
   border: none;
-  background-color: #0e6cbf;
+  background-color: ${(props) => {
+    if (props.color > 0) {
+      return "#1567A4";
+    } else if (props.color <= 0) {
+      return "#545454bf";
+    }
+  }};
   color: #ffffff;
   border-radius: 5px;
 `;

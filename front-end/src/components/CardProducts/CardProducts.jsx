@@ -20,8 +20,8 @@ export const CardProduct = (props) => {
       </Price>
 
       {props.quantity < 1 ? (
-        <Button type={"button"} onClick={props.buttonAdd}>
-          ADICIONAR
+        <Button color={props.qtyStock} type={"button"} onClick={props.buttonAdd}>
+         {props.qtyStock > 1 ? "ADICIONAR" : "INDISPONIVEL"}
         </Button>
       ) : (
         <ContainerButtons>

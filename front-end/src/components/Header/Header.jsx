@@ -4,9 +4,12 @@ import { MdOutlineInventory } from "react-icons/md";
 import { goToHome, goToStock } from "../../router/Coordinator";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineHome } from "react-icons/ai";
+import {Cart} from "../Cart/Cart"
+import { useState } from "react";
 
 export const Header = (props) => {
   const navigate = useNavigate();
+  const[sidebar,setSidebar] = useState(false)
 
   return (
     <Container>
@@ -21,7 +24,8 @@ export const Header = (props) => {
           color={"white"}
           onClick={() => goToStock(navigate)}
         />
-        <BsCart2 size={"25px"} color={"white"} onClick={() => ""} />
+        <BsCart2  size={"25px"} color={"white"} onClick={() =>setSidebar(!sidebar)} />
+        <Cart cart={sidebar}/>
       </Nav>
     </Container>
   );

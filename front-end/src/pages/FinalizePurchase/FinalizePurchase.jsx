@@ -7,7 +7,7 @@ import {
   TitleTable,
   Values,
   Produtos,
-  ContainValues
+  ContainValues,
 } from "./styled";
 import { CardListCart } from "../../components/CardListCart/CardListCart";
 import { Header } from "../../components/Header/Header";
@@ -17,11 +17,13 @@ import { Button } from "@mui/material";
 import { useForm } from "../../hooks/useForm";
 import { createOrder } from "../../services/orderRequest";
 import { Getcart } from "../../services/cartShoppingRequest";
+import { useContext } from "react";
+import { GlobalStateContext } from "../../global/GlobalStateContext";
 
 export const FinalizePurchase = () => {
-  //  useRequestData([], "/list");
-   const itensCart = Getcart()
-   console.log(itensCart)
+  const { cart } = useContext(GlobalStateContext);
+  Getcart();
+
   const { form, onChange, clean } = useForm({
     userName: "",
     deliveryDate: "",
@@ -30,11 +32,10 @@ export const FinalizePurchase = () => {
   const submit = (event) => {
     event.preventDefault();
     createOrder(form, clean);
-  
   };
 
   let total = 0;
-  const listaitensCart = itensCart?.map((product) => {
+  const listaitensCart = cart.map((product) => {
     total += product.total;
     return (
       <CardListCart
@@ -74,15 +75,17 @@ export const FinalizePurchase = () => {
             value={form.deliveryDate}
             required
           />
-          <Button variant="contained" type="submit">Finalizar compra</Button>
+          <Button variant="contained" type="submit">
+            Finalizar compra
+          </Button>
         </Form>
       </CheckPurchase>
-      <TitleTable>  
+      <TitleTable>
         <Produtos>Produtos</Produtos>
         <ContainValues>
-        <Values>Preço produto</Values>
-        <Values>Quantidade</Values>
-        <Values>Valor total</Values>
+          <Values>Preço produto</Values>
+          <Values>Quantidade</Values>
+          <Values>Valor total</Values>
         </ContainValues>
       </TitleTable>
       <TableProducts>{listaitensCart}</TableProducts>

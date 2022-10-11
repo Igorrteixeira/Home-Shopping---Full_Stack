@@ -15,6 +15,8 @@ export const Nav = styled.div`
     align-items: center;
     margin-right: 40px;
     gap: 10px;
+
+
 `
 // export const Logo = styled.img`
 //     width: 220px;
