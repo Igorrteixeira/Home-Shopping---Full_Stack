@@ -7,12 +7,14 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
    
     }
-    p{
+    p,h1{
       font-family: 'Roboto', sans-serif;
     }
     
     button{
       cursor: pointer;
+      width: 200px;
     }
+   
 
     `;

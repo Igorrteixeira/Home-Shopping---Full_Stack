@@ -8,9 +8,6 @@ export const GlobalState = (props) => {
     
     const[cart,setCart]  = useState([])
     const[loader,setLoader] = useState(false)
-
-    
-
     return (
         <div>
         <GlobalStateContext.Provider value={{cart,setCart}}> 

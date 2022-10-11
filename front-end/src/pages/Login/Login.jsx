@@ -1,4 +1,4 @@
-import { Container,Form } from "./styled";
+import { Container,Form,Img,Logo } from "./styled";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -6,6 +6,7 @@ import { useForm } from "../../hooks/useForm";
 import { goToSignup } from "../../router/Coordinator";
 import { login } from "../../services/userRequest";
 import {Header} from "../../components/Header/Header"
+import logo from "../../assets/img/home.png"
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -21,6 +22,8 @@ export const Login = () => {
   return (
     <Container>
       <Header/>
+      <Logo><Img src={logo} alt="" /></Logo>
+      <h1>BEM-VINDO !</h1>
       <Form onSubmit={submit}>
         <TextField
           id="email"
@@ -45,6 +48,7 @@ export const Login = () => {
         />
 
         <Button variant="contained" type={"submit"}>Login</Button>
+        <p>Ainda não e cliente ?</p>
         <Button variant="outlined" onClick={() => goToSignup(navigate)}>Crie uma conta</Button>
       </Form>
     </Container>

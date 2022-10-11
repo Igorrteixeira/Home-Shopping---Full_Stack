@@ -1,14 +1,14 @@
 import React from "react";
 import {GlobalStyle } from "./global/globalStyle"
 import {Router} from "./router/Router"
-
+import {GlobalState} from "./global/GlobalState"
 
 const App = () => {
   return (
-    <div>
+    <GlobalState>
       <GlobalStyle/>
     <Router/>
-    </div>
+    </GlobalState>
   );
 }
 

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import fundoCard from "../../assets/img/sho.png"
 
 export const Container = styled.div`
   display: flex;
@@ -60,3 +61,5 @@ export const Price = styled.p`
     font-size: 20px;
   }
 `;
+
+

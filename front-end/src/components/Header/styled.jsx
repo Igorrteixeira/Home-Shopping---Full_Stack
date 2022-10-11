@@ -4,8 +4,8 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    background-image: linear-gradient(#faf5f5, #eae4e4,#ebe4e4,#828181);
-    width: 99vw;
+    background-image: linear-gradient(#1567A4, #1C8ADB,#30a0f0,#0b5287);
+    width: 100vw;
     height: 8vh;
     
     

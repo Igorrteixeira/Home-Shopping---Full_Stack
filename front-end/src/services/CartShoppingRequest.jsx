@@ -11,7 +11,9 @@ export const addCart = (id) => {
   axios
     .post(`${URL_BASE}/list/create`, body, token)
     .then((res) => {
+      
       alert(res.data)
+      
     })
     .catch((error) => alert(error.response.data));
 };
@@ -26,13 +28,13 @@ export const removeCart = (id) => {
 }
 
 export const Getcart = () => {
-  const[productsCart,setProductsCart] = useState([])
+  const[cart,setCart] = useState([])
     useEffect(()=>{
     axios.get(`${URL_BASE}/list`,token).then((res)=>{
         setProductsCart(res.data)
         // setLoader(true)
     }).catch((err)=> alert(err.reponse.data.message))
-},[])
+},[productsCart])
    return productsCart
 }
 

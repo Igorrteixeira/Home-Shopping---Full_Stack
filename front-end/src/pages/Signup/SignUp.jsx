@@ -21,11 +21,12 @@ export const Signup = () => {
   };
 
   return (
-    <>
-    <Header/>
+   
+    
     <Container>
+      <Header/>
       
-      <h1>Bem vindo</h1>
+      <h1>BEM-VINDO !</h1>
       <Form onSubmit={submit}>
         <TextField
           type="text"
@@ -63,6 +64,6 @@ export const Signup = () => {
         <Button variant="contained" type={"submit"}>Signup</Button>
       </Form>
     </Container>
-    </>
+    
   );
 };
