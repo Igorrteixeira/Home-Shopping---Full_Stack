@@ -1,13 +1,14 @@
 import React from "react";
-import {GlobalProvider} from "./provider/GlobalProvider"
- 
+import {GlobalStyle } from "./global/globalStyle"
+import {Router} from "./router/Router"
+import {GlobalState} from "./global/GlobalState"
+
 const App = () => {
   return (
-    <GlobalProvider>
-    <div >
-      <h1>app</h1>
-    </div>
-    </GlobalProvider>
+    <GlobalState>
+      <GlobalStyle/>
+    <Router/>
+    </GlobalState>
   );
 }
 

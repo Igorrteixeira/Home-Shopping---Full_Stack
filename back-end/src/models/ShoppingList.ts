@@ -46,7 +46,6 @@ export interface OChecksListDTO {
 }
 
 export interface OShoppingListDTO {
-  
   id: string;
   id_product: string;
   user_id: string;
@@ -56,4 +55,6 @@ export interface OShoppingListDTO {
   order_id: string | null;
   quantity: number;
 }
+
+
 

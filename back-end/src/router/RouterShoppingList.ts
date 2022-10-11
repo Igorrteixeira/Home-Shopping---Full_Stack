@@ -20,6 +20,6 @@ export const shoppingListController = new ShoppingListController(
     )
 )
 
-shoppingListRouter.post("/create/:id",shoppingListController.createList)
+shoppingListRouter.post("/create",shoppingListController.createList)
 shoppingListRouter.get("",shoppingListController.getListById)
-shoppingListRouter.delete("/:id",shoppingListController.deleteList)
+shoppingListRouter.delete("/delete/:id",shoppingListController.deleteList)

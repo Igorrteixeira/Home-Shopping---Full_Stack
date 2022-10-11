@@ -30,4 +30,5 @@ export class UserData extends DataBase {
       .where({ id });
     return result;
   };
+
 }
