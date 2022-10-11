@@ -14,18 +14,18 @@ export class ProductsData extends DataBase {
   };
 
   getAllProducts = async () => {
-      const response = await this.getConnection()
+    const response = await this.getConnection()
       .from(ProductsData.TABLE_PRODUCTS)
-      .select()
-      return response
-  }
+      .select();
+    return response;
+  };
 
-  updateProducts = async (input:IRemoveStockDTO) => {
+  updateProducts = async (input: IRemoveStockDTO) => {
     await this.getConnection()
-    .from(ProductsData.TABLE_PRODUCTS)
-    .update({
-      qty_stock:input.qtyStock
-    })
-    .where("id",`${input.productId}`)
+      .from(ProductsData.TABLE_PRODUCTS)
+      .update({
+        qty_stock: input.qtyStock,
+      })
+      .where("id", `${input.productId}`);
   };
 }

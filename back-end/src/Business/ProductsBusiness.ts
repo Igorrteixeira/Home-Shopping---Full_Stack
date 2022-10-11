@@ -6,7 +6,7 @@ export class ProductsBusiness {
    getProducts = async (token:string) => {
     console.log(token)
         if(!token){
-            throw new CustomError(422, "Enter all parameters");
+            throw new CustomError(422, "Entre com todos parametros");
         }
         const response = await this.productData.getAllProducts()
         return response

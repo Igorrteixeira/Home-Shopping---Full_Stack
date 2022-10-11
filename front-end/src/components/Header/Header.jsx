@@ -20,6 +20,7 @@ export const Header = () => {
         <img src={logo} alt="" />
       </Logo>
       <Nav>
+        
         <AiOutlineHome
           size={"25px"}
           color={"white"}

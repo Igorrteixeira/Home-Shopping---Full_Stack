@@ -1,4 +1,4 @@
-import { IloginDTO, ISignupDTO, ROLES, User } from "../models/User";
+import { IloginDTO, ISignupDTO, User } from "../models/User";
 import { CustomError } from "../error/CustomError";
 import { UserData } from "../dataBase/UserData";
 import { HashManager } from "../services/HashManeger";
@@ -17,16 +17,18 @@ export class UserBusiness {
     const { name, email, password, roles } = input;
     const validUser = await this.userData.getEmailDb(email);
     if (!name || !email || !password) {
-      throw new CustomError(422, "Enter all parameters");
+      throw new CustomError(422, "Enter all parameters")
     }
     if (validUser.length > 0) {
       throw new CustomError(401, "E-mail already registered");
     }
     if (!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
-      throw new CustomError(422, "invalid email format");
+      throw new CustomError(422, "invalid email format")
     }
     if (password.length < 6 || typeof password !== "string") {
-      throw new CustomError( 401,"invalid password format = (string 6 characters");}
+      throw new CustomError( 401,"invalid password format = (string 6 characters")
+    }
+
     const newPasword = await this.hashManager.hash(password);
     const id = this.generateId.generateId();
     const newUser = new User(id, name, email, newPasword, roles);
@@ -43,23 +45,23 @@ export class UserBusiness {
       validUser.password
     );
     if (!email || !password) {
-      throw new CustomError(422, "Enter all parameters");
+      throw new CustomError(422, "Entre com todos parametros");
     }
     if (
       !email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ )) {
-      throw new CustomError(422, "Envalid email format");
+      throw new CustomError(422, "Email com formato invalido");
     }
     if (!validUser) {
-      throw new CustomError(401, "Email not found");
+      throw new CustomError(401, "Email não existe");
     }
     if (password.length < 6 || typeof password !== "string") {
       throw new CustomError(
         401,
-        "invalid password format = (string 6 characters)"
+        "password inválido, no minimo 6 caracteres"
       );
     }
     if (!validPassword) {
-      throw new CustomError(401, "password invalid");
+      throw new CustomError(401, "password invalido");
     }
     const result = this.autheticator.generateToken({
       id: validUser.id,

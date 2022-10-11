@@ -8,9 +8,7 @@ import { UserData } from "../dataBase/UserData";
 import { Autheticator } from "../services/Authenticator";
 import { GenerateId } from "../services/GenerateId";
 
-
 export const shoppingOrderRouter = Router()
-
 export const shoppingOrderController = new ShoppingOrderController(
     new ShoppingOrderBusiness(
         new Autheticator(),
@@ -24,4 +22,3 @@ export const shoppingOrderController = new ShoppingOrderController(
 )
 
 shoppingOrderRouter.post("/create",shoppingOrderController.createOrder)
-shoppingOrderRouter.get("",shoppingOrderController.getOrder)
