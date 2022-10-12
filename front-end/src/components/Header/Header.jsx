@@ -40,11 +40,6 @@ export const Header = () => {
             <MdOutlineInventory size={"25px"} color={"white"}/>
           </Icon>
         </Tooltip>
-        <Tooltip title="Logout">
-          <Icon onClick={()=>logout()}>
-            <MdLogout size={"25px"} color={"white"} />
-          </Icon>
-        </Tooltip>
         {locate.pathname !== "/finalizepurchase" ? (
           <Tooltip title="Carrinho">
             <Icon onClick={() => setSidebar(!sidebar)}>
@@ -56,6 +51,11 @@ export const Header = () => {
             <MdKeyboardBackspace /> Voltar as compras{" "}
           </Button>
         )}
+        <Tooltip title="Logout">
+          <Icon onClick={()=>logout()}>
+            <MdLogout size={"25px"} color={"white"} />
+          </Icon>
+        </Tooltip>
         <Cart cart={sidebar} />
       </Nav>
     </Container>
