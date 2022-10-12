@@ -18,6 +18,7 @@ import {
 export const Cart = (props) => {
   const { cart } = useContext(GlobalStateContext);
   const navigate = useNavigate();
+
   let amount = 0;
   const listCart = cart?.map((product) => {
     amount += product.total;
@@ -63,11 +64,10 @@ export const Cart = (props) => {
         <Container>
           <Button
             variant="outlined"
-            onClick={() => goToFianlizaPuchase(navigate)}
-          >
+            onClick={() => goToFianlizaPuchase(navigate)}>
             Finalizar
           </Button>
-          {listCart}
+        {listCart.length < 1 ? <p>Você ainda não possui itens no carrinho.</p> : <>{listCart}</>}
           <Total>TOTAL: R$ {amount.toFixed(2)}</Total>
         </Container>
       ) : (

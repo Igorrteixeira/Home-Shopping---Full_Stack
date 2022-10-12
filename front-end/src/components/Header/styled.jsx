@@ -13,16 +13,8 @@ export const Container = styled.div`
 export const Nav = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 40px;
+  margin-right: 3vw;
   gap: 10px;
-
-  #nav {
-    :hover {
-      transform: scale(1.3);
-      cursor: pointer;
-      background-color: #0b5187ac;
-    }
-  }
 `;
 
 export const Button = styled.button`
@@ -57,3 +49,16 @@ export const Logo = styled.div`
     font-size: 0px;
   }
 `;
+
+export const Icon = styled.button`
+    width:25px;
+    height: 25px;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    :hover {
+      transform: scale(1.3);
+      cursor: pointer;
+    }
+`

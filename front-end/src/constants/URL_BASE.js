@@ -1,4 +1,4 @@
-export const URL_BASE = "http://localhost:3003"
+export const URL_BASE = "https://shopper-home-teste.herokuapp.com"
 
 export const token = {
     headers: {

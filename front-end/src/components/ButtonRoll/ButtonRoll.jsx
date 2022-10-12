@@ -7,14 +7,13 @@ const ButtonNavigate = styled.div`
     bottom: 40px;
     border:none;
     
-   
+      
 `
-
 export const ButtonRoll = () => {
  return(
   <ButtonNavigate
   onClick={() => {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0); 
   }}
 >
   <BsFillArrowUpCircleFill 

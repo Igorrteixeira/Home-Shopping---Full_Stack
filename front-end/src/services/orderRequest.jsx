@@ -18,7 +18,6 @@ export const createOrder = (form, clean) => {
           toast.addEventListener("mouseleave", Swal.resumeTimer);
         },
       });
-
       Toast.fire({
         icon: "success",
         title: "Pedido concluido!",
@@ -26,5 +25,5 @@ export const createOrder = (form, clean) => {
       clean();
       Getcart();
     })
-    .catch((error) => console.log(error.reposnse.data));
+    .catch((error) => alert(error.reposnse.data));
 };

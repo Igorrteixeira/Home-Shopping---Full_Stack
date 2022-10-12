@@ -48,7 +48,7 @@ export const Values = styled.td`
   }};
 `;
 
-export const Indice = styled.div`
+export const Legend = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;

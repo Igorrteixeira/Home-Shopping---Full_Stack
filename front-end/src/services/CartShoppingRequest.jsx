@@ -42,26 +42,13 @@ export const removeCart = (id) => {
 export const removeAll = (id) => {
   axios
     .delete(`${URL_BASE}/list/deleteall/${id}`, token)
-    .then((res) => {
-      Swal.fire({
-        title: "Deseja realmente remover esse item ?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#319518",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Remover!",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire("Deletado!");
-        }
-      });
+    .then((res) => {  
     })
     .catch((error) => alert(error.response));
 };
 
 export const Getcart = () => {
-  const { cart, setCart, setLoader,loader } = useContext(GlobalStateContext);
-
+  const { cart, setCart, setLoader} = useContext(GlobalStateContext);
   useEffect(() => {
     setTimeout(() => {
       axios

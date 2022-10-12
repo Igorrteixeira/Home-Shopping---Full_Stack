@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   margin-top: 10vh;
+  text-align: center;
+  color: #091338;
 `;
-
 export const TitleTable = styled.table`
   display: flex;
   margin: 0 auto;
@@ -60,7 +61,6 @@ export const CheckPurchase = styled.div`
 export const Form = styled.form`
   display: flex;
   gap: 20px;
-
   input {
     width: 200px;
   }

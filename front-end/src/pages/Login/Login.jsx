@@ -1,14 +1,16 @@
-import { Container,Form,Img,Logo } from "./styled";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
+import {useUnProtectedPage} from "../../hooks/useUnProtected"
 import { goToSignup } from "../../router/Coordinator";
 import { login } from "../../services/userRequest";
 import {Header} from "../../components/Header/Header"
 import logo from "../../assets/img/home.png"
+import { Container,Form,Img,Logo } from "./styled";
 
 export const Login = () => {
+  useUnProtectedPage()
   const navigate = useNavigate();
   const { form, onChange, clean } = useForm({
     email: "",

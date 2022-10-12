@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import {GlobalStateContext} from './GlobalStateContext'
 
-
-
 export const GlobalState = (props) => {
-
-    
     const[cart,setCart]  = useState([])
     const[loader,setLoader] = useState(false)
     return (

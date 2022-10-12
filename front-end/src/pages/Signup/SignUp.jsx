@@ -1,14 +1,15 @@
-import { Container,Form,Title } from "./styled";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
+import {useUnProtectedPage} from "../../hooks/useUnProtected"
 import { signUp } from "../../services/userRequest";
 import {Header} from "../../components/Header/Header"
+import { Container,Form,Title } from "./styled";
 
 export const Signup = () => {
+  useUnProtectedPage()
   const navigate = useNavigate();
-
   const { form, onChange, clean } = useForm({
     name: "",
     email: "",
@@ -19,10 +20,7 @@ export const Signup = () => {
     event.preventDefault();
     signUp(form, clean, navigate);
   };
-
-  return (
-   
-    
+  return ( 
     <Container>
       <Header/>
       <Title>BEM-VINDO !</Title>
@@ -37,7 +35,6 @@ export const Signup = () => {
           value={form.name}
           required
         />
-
         <TextField
           id="email"
           label="Email"
@@ -48,7 +45,6 @@ export const Signup = () => {
           value={form.email}
           required
         />
-
         <TextField
           type="password"
           id="password"
@@ -59,10 +55,8 @@ export const Signup = () => {
           value={form.password}
           required
         />
-
         <Button variant="contained" type={"submit"}>Signup</Button>
       </Form>
-    </Container>
-    
+    </Container>    
   );
 };

@@ -1,14 +1,15 @@
 import { CardListCart } from "../../components/CardListCart/CardListCart";
+import {ButtonRoll} from "../../components/ButtonRoll/ButtonRoll"
 import { Header } from "../../components/Header/Header";
-import { BsFillCartCheckFill } from "react-icons/bs";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
+import { BsFillCartCheckFill } from "react-icons/bs";
 import { useForm } from "../../hooks/useForm";
+import {useProtectedPage} from "../../hooks/useProtectPage"
 import { createOrder } from "../../services/orderRequest";
 import { Getcart } from "../../services/CartShoppingRequest";
-import { useContext } from "react";
 import { GlobalStateContext } from "../../global/GlobalStateContext";
-import {ButtonRoll} from "../../components/ButtonRoll/ButtonRoll"
+import { useContext } from "react";
 import {
   Container,
   TableProducts,
@@ -22,9 +23,9 @@ import {
 } from "./styled";
 
 export const FinalizePurchase = () => {
+  useProtectedPage()
   const { cart } = useContext(GlobalStateContext);
   Getcart();
-
   const { form, onChange, clean } = useForm({
     userName: "",
     deliveryDate: "",
@@ -81,6 +82,7 @@ export const FinalizePurchase = () => {
           </Button>
         </Form>
       </CheckPurchase>
+      {listaitensCart.length < 1 ? <h2>Você ainda não possui itens no carrinho.</h2>:
       <TitleTable>
         <Produtos>Produtos</Produtos>
         <ContainValues>
@@ -88,7 +90,7 @@ export const FinalizePurchase = () => {
           <Values>Qtd</Values>
           <Values>Valor total</Values>
         </ContainValues>
-      </TitleTable>
+      </TitleTable>}
       <TableProducts>{listaitensCart}</TableProducts>
       <ButtonRoll/>
     </Container>

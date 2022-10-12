@@ -10,23 +10,19 @@ import { BsFillBagPlusFill, BsFillBagDashFill } from "react-icons/bs";
 import {Loader} from "../../components/Loader/Loader"
 
 export const CardProduct = (props) => {
-
   return (
     <>{!props.loader ? <Loader/> :
     <Container key={props.id}>
-      
       <Title>{props.name}</Title>
-      
       <Price>
         <span>R$</span> {props.price}
       </Price>
-
       {props.quantity < 1 ? (
         <Button color={props.qtyStock} type={"button"} onClick={props.buttonAdd}>
          {props.qtyStock > 1 ? "ADICIONAR" : "INDISPONIVEL"}
         </Button>
       ) : (
-        <ContainerButtons>
+        <ContainerButtons>  
           <BsFillBagDashFill
             cursor={"pointer"}
             size={"25px"}
@@ -35,7 +31,8 @@ export const CardProduct = (props) => {
             onMouseOver={({ target }) => (target.style.color = "red")}
             onMouseOut={({ target }) => (target.style.color = "#f56161")}
           />
-          {!props.quantity ? <Loader/>:<Quantity>{props.quantity}</Quantity>}
+         
+         <Quantity>{props.quantity}</Quantity>
           <BsFillBagPlusFill
             cursor={"pointer"}
             size={"25px"}

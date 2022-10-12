@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import fundo from "../../assets/img/online.png"
 
-
 export const Container = styled.div`
     height: 99vh;
      background-image: url(${fundo});
@@ -11,7 +10,6 @@ export const Container = styled.div`
      h1{
         text-align: center;
      }
-
 `
 export const Form = styled.form`
     display:flex;
@@ -25,16 +23,11 @@ export const Form = styled.form`
     height: 300px;
     margin: 20px auto;
     border-radius: 5px;
-    box-shadow: 5px 5px  #00000014;
-    
+    box-shadow: 5px 5px  #00000014;  
     input{
       width: 300px;
     }
-    
-    
-
 `
-
 export const Img = styled.img`
     margin: 30px auto;
     width: 200px;

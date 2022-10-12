@@ -1,11 +1,13 @@
-import { Container, StockItens, Values, TitleProduct,Indice} from "./styled";
 import { useRequestData } from "../../hooks/useRequestData";
+import { useProtectedPage } from "../../hooks/useProtectPage";
 import { Header } from "../../components/Header/Header";
-import {AiFillCheckCircle,AiFillCloseCircle,AiFillClockCircle} from "react-icons/ai"
 import {ButtonRoll} from "../../components/ButtonRoll/ButtonRoll"
+import {AiFillCheckCircle,AiFillCloseCircle,AiFillClockCircle} from "react-icons/ai"
+import { Container, StockItens, Values, TitleProduct,Legend} from "./styled";
 
- 
 export const Stock = () => {
+  
+  useProtectedPage()
   const productData = useRequestData([], "/products");
 
   return (
@@ -13,11 +15,11 @@ export const Stock = () => {
       <Header />
       <Container>
         <h1>Estoque</h1>
-        <Indice>
+        <Legend>
           <p>Em falta <AiFillCloseCircle color="red"/></p>
           <p>Em estoque <AiFillCheckCircle color="green"/></p>
           <p>Pedir <AiFillClockCircle color="#eb5a20"/></p>
-        </Indice>
+        </Legend>
         <table>
           <StockItens>
             <TitleProduct>Produtos</TitleProduct>
