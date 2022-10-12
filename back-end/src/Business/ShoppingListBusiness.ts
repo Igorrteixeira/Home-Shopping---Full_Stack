@@ -29,7 +29,6 @@ export class ShoppingListBusiness {
     if (!validtoken) {
       throw new CustomError(401, "Token inválido");
     }
-
     const [products] = await this.productData.getProducts(productId);
     if (String(products.id) === productId && products.qty_stock < 1) {
       throw new CustomError(404, "Produto indisponivel no momento");
@@ -39,7 +38,6 @@ export class ShoppingListBusiness {
     const newList = new ShoppingList(id, productId, userId);
 
     const list = await this.shoppingListData.getListById(userId);
-
     if (list.length < 1) {
       const response = await this.shoppingListData.createList(newList);
       return response;
@@ -49,10 +47,7 @@ export class ShoppingListBusiness {
         shoppingList.id_product === productId &&
         shoppingList.quantity >= products.qty_stock
       ) {
-        throw new CustomError(
-          404,
-          `Sinto muito, temos somente ${products.qty_stock} unidades desse produto`
-        );
+        throw new CustomError(404,`Sinto muito, temos somente ${products.qty_stock} unidades desse produto`);
       }
       if (
         shoppingList.id_product === productId &&
