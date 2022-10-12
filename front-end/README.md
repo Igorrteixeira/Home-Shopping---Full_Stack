@@ -8,14 +8,17 @@
 * vizualiza itens no carrinho
 * Fomulario para finaliza compra 
 
-# Tecnologias
+### Tecnologias
 
-ReactJS.
+* ReactJS.
+* Styled Components.
+* Axios.
+* React Icons.
+* Material Ui.
+* link do deploy:
 
-Styled Components.
+http://home.shopping-bread.surge.sh/home
 
-Axios.
-
-React Icons.
-
-Material Ui.
+login para teste:
+* email: igor@gmail.com
+* password: 123456

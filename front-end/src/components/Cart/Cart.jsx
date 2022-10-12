@@ -57,7 +57,6 @@ export const Cart = (props) => {
       </Card>
     );
   });
-
   return (
     <>
       {props.cart === true ? (

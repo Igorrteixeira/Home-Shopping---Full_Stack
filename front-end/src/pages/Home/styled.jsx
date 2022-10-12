@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     margin-top: 9vh;
     text-align: center;
+    padding-bottom: 1vw;
 `;
 
 export const Products = styled.div`
