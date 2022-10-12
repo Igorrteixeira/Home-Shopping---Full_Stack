@@ -18,4 +18,5 @@ export const shoppingListController = new ShoppingListController(
 
 shoppingListRouter.post("/create",shoppingListController.createList)
 shoppingListRouter.get("",shoppingListController.getListById)
+shoppingListRouter.delete("/deleteall/:id",shoppingListController.deleteAll)
 shoppingListRouter.delete("/delete/:id",shoppingListController.deleteList)

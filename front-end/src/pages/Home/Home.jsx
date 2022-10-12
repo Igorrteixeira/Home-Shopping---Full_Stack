@@ -25,7 +25,7 @@ export const Home = () => {
     }
 
     return (
-      <CardProduct
+      <CardProduct key={product.id}
         id={product.id}
         name={product.name}
         price={product.price}

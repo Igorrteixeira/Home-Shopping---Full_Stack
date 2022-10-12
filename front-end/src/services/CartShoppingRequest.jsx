@@ -5,19 +5,18 @@ import { GlobalStateContext } from "../../src/global/GlobalStateContext";
 import Swal from "sweetalert2";
 
 export const addCart = (id) => {
-  console.log(id, token);
   const body = {
     productId: id,
   };
   axios
     .post(`${URL_BASE}/list/create`, body, token)
-    .then((res) => {
+    .then(() => {
       Getcart();
     })
     .catch((error) => {
       const Toast = Swal.mixin({
         toast: true,
-        position: "top-center",
+        position: "top",
         showConfirmButton: false,
         timer: 1900,
         timerProgressBar: true,
@@ -25,7 +24,7 @@ export const addCart = (id) => {
           toast.addEventListener("mouseenter", Swal.stopTimer);
           toast.addEventListener("mouseleave", Swal.resumeTimer);
         },
-      })
+      });
       Toast.fire({
         icon: "error",
         title: error.response.data,
@@ -38,6 +37,26 @@ export const removeCart = (id) => {
     .delete(`${URL_BASE}/list/delete/${id}`, token)
     .then((res) => {})
     .catch((error) => alert(error.response.data));
+};
+
+export const removeAll = (id) => {
+  axios
+    .delete(`${URL_BASE}/list/deleteall/${id}`, token)
+    .then((res) => {
+      Swal.fire({
+        title: "Deseja realmente remover esse item ?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#319518",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Remover!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire("Deletado!");
+        }
+      });
+    })
+    .catch((error) => alert(error.response));
 };
 
 export const Getcart = () => {

@@ -1,8 +1,11 @@
-import {IDeleteListDB,OChecksListDTO,OShoppingListDTO,ShoppingList} from "../models/ShoppingList";
+import {
+  IDeleteListDB,
+  OShoppingListDTO,
+  ShoppingList,
+} from "../models/ShoppingList";
 import { DataBase } from "./DataBase";
 
 export class ShoppingListData extends DataBase {
-
   public static TABLE_LIST = "Shopper_shopping_list";
   public static TABLE_PRODUCTS = "Shopper_products";
 
@@ -11,9 +14,9 @@ export class ShoppingListData extends DataBase {
       id: input.getId(),
       id_product: input.getProductId(),
       user_id: input.getUserId(),
-      quantity: input.getQuantity()
+      quantity: input.getQuantity(),
     });
-    return "successfully inserted";
+    return "Adicionado com sucesso";
   };
 
   getListById = async (userId: string): Promise<OShoppingListDTO[]> => {
@@ -27,16 +30,15 @@ export class ShoppingListData extends DataBase {
         "Shopper_products.price",
         "Shopper_products.qty_stock",
         "Shopper_shopping_list.order_id",
-        "Shopper_shopping_list.quantity",
-        
+        "Shopper_shopping_list.quantity"
       )
       .innerJoin(
         "Shopper_products",
         "Shopper_products.id",
         "Shopper_shopping_list.id_product"
-        )
+      )
       .where("user_id", `${userId}`)
-      .andWhere("order_id",null)
+      .andWhere("order_id", null);
     return response;
   };
 
@@ -46,18 +48,19 @@ export class ShoppingListData extends DataBase {
       .from(ShoppingListData.TABLE_LIST)
       .delete()
       .where({ id })
+      .orWhere("id_product", `${id}`)
       .andWhere({ user_id });
-    return "successfully deleted";
+    return "Deletado com sucesso";
   };
 
-  updateQtyList = async (quantity:number,id:string ) => {
+  updateQtyList = async (quantity: number, id: string) => {
     await this.getConnection()
       .from(ShoppingListData.TABLE_LIST)
       .update({
         quantity,
       })
-      .where({id})
-      return "successfully"
+      .where({ id });
+    return "Sucesso";
   };
 
   updateList = async (id: string, idOrder: string) => {

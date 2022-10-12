@@ -8,11 +8,15 @@ import {
   Values,
 } from "./styled";
 import { GlobalStateContext } from "../../global/GlobalStateContext";
-import { BsFillBagDashFill, BsFillBagPlusFill } from "react-icons/bs";
+import { BsFillBagDashFill, BsFillBagPlusFill, BsTrash } from "react-icons/bs";
 import { Button } from "@mui/material";
 import { goToFianlizaPuchase } from "../../router/Coordinator";
 import { useNavigate } from "react-router-dom";
-import { addCart, removeCart } from "../../services/cartShoppingRequest";
+import {
+  addCart,
+  removeCart,
+  removeAll,
+} from "../../services/cartShoppingRequest";
 
 export const Cart = (props) => {
   const { cart } = useContext(GlobalStateContext);
@@ -44,6 +48,10 @@ export const Cart = (props) => {
               onMouseOut={({ target }) => (target.style.color = "#3b8531")}
             />
           </ContainerButtons>
+          <BsTrash
+            color="red"
+            onClick={() => removeAll(product.list.id_product)}
+          />
         </Values>
       </Card>
     );

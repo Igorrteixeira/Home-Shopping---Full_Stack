@@ -7,6 +7,7 @@ export const Container = styled.div`
      background-image: url(${fundo});
      background-repeat: no-repeat, repeat;
      background-size:100vw 100vh;
+     margin-top: 8vh;
      h1{
         text-align: center;
      }

@@ -15,7 +15,7 @@ export class ShoppingListBusiness {
     private generateId: GenerateId,
     private autheticator: Autheticator,
     private shoppingListData: ShoppingListData,
-    private productData: ProductsData,
+    private productData: ProductsData
   ) {}
 
   createListBusiness = async (input: ICreateListDTO) => {
@@ -39,14 +39,20 @@ export class ShoppingListBusiness {
     const newList = new ShoppingList(id, productId, userId);
 
     const list = await this.shoppingListData.getListById(userId);
-    
+
     if (list.length < 1) {
       const response = await this.shoppingListData.createList(newList);
       return response;
     }
     for (const shoppingList of list) {
-      if(shoppingList.id_product === productId && shoppingList.quantity >= products.qty_stock){
-        throw new CustomError(404,`Sinto muito, temos somente ${products.qty_stock} unidades desse produto`)
+      if (
+        shoppingList.id_product === productId &&
+        shoppingList.quantity >= products.qty_stock
+      ) {
+        throw new CustomError(
+          404,
+          `Sinto muito, temos somente ${products.qty_stock} unidades desse produto`
+        );
       }
       if (
         shoppingList.id_product === productId &&
@@ -86,7 +92,6 @@ export class ShoppingListBusiness {
 
   deleteListBusiness = async (input: IDeleteListDTO) => {
     const { token, id } = input;
-    console.log(input)
     const validtoken = this.autheticator.getTokenData(token);
     const userId = validtoken.id;
 
@@ -122,4 +127,24 @@ export class ShoppingListBusiness {
     }
     return "Produto não esta na lista";
   };
+
+  deleteAll = async (input: IDeleteListDTO) => {
+    const { token, id } = input;
+    const validtoken = this.autheticator.getTokenData(token);
+    const userId = validtoken.id;
+
+    if (!token || !id) {
+      throw new CustomError(422, "Entre com todos parametros");
+    }
+    if (!validtoken) {
+      throw new CustomError(401, "token inválido");
+    }
+    const inputDelete: IDeleteListDB = {
+      id,
+      user_id: userId,
+    };
+    const response = await this.shoppingListData.deleteList(inputDelete);
+    return response
+  };
+
 }

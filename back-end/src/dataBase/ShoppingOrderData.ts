@@ -14,7 +14,7 @@ export class ShoppingOrderData extends DataBase {
         delivery_date: input.getDeliveryDate(),
         user_id: input.getUserId(),
       });
-    return "Order registered successfully";
+    return "Pedido finalizado com sucesso";
   };
 
 }
