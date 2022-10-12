@@ -18,7 +18,7 @@ export const addCart = (id) => {
         toast: true,
         position: "top",
         showConfirmButton: false,
-        timer: 1900,
+        timer: 3000,
         timerProgressBar: true,
         didOpen: (toast) => {
           toast.addEventListener("mouseenter", Swal.stopTimer);
@@ -60,13 +60,17 @@ export const removeAll = (id) => {
 };
 
 export const Getcart = () => {
-  const { cart, setCart } = useContext(GlobalStateContext);
+  const { cart, setCart, setLoader,loader } = useContext(GlobalStateContext);
+
   useEffect(() => {
-    axios
-      .get(`${URL_BASE}/list`, token)
-      .then((res) => {
-        setCart(res.data);
-      })
-      .catch((err) => alert(err.reponse.data.message));
+    setTimeout(() => {
+      axios
+        .get(`${URL_BASE}/list`, token)
+        .then((res) => {
+          setLoader(true);
+          setCart(res.data);
+        })
+        .catch((err) => alert(err.reponse.data.message));
+    }, 2500);
   }, [cart]);
 };

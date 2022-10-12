@@ -15,6 +15,14 @@ export const Nav = styled.div`
   align-items: center;
   margin-right: 40px;
   gap: 10px;
+
+  #nav {
+    :hover {
+      transform: scale(1.3);
+      cursor: pointer;
+      background-color: #0b5187ac;
+    }
+  }
 `;
 
 export const Button = styled.button`
@@ -42,11 +50,9 @@ export const Logo = styled.div`
   left: 1px;
   height: 50px;
   margin-left: 40px;
-
   img {
     height: 55px;
   }
-
   @media screen and (min-device-width: 320px) and (max-device-width: 580px) {
     font-size: 0px;
   }

@@ -1,15 +1,15 @@
 import { Container, Products } from "./styled";
 import { useRequestData } from "../../hooks/useRequestData";
-import { addCart, Getcart } from "../../services/cartShoppingRequest";
-import { removeCart } from "../../services/cartShoppingRequest";
+import { addCart, Getcart,removeCart } from "../../services/CartShoppingRequest";
 import { useContext } from "react";
 import { GlobalStateContext } from "../../global/GlobalStateContext";
 import { ButtonRoll } from "../../components/ButtonRoll/ButtonRoll";
 import { CardProduct } from "../../components/CardProducts/CardProducts";
 import { Header } from "../../components/Header/Header";
+import {Loader} from "../../components/Loader/Loader"
 
 export const Home = () => {
-  const { cart } = useContext(GlobalStateContext);
+  const { cart,loader } = useContext(GlobalStateContext);
   const productData = useRequestData([], "/products");
 
   Getcart();
@@ -33,6 +33,8 @@ export const Home = () => {
         buttonAdd={() => addCart(product.id)}
         buttonRemove={() => removeCart(id)}
         qtyStock={product.qty_stock}
+        loader={loader}
+        
       />
     );
   });
@@ -42,6 +44,7 @@ export const Home = () => {
       <Header />
       <Products>{listProducts}</Products>
       <ButtonRoll />
+      
     </Container>
   );
 };

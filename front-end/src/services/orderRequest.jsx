@@ -1,6 +1,6 @@
 import axios from "axios";
 import { token, URL_BASE } from "../constants/URL_BASE";
-import { Getcart } from "./cartShoppingRequest";
+import { Getcart } from "./CartShoppingRequest";
 import Swal from "sweetalert2";
 
 export const createOrder = (form, clean) => {

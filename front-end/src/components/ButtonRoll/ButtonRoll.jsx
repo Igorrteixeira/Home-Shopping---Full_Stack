@@ -7,7 +7,7 @@ const ButtonNavigate = styled.div`
     bottom: 40px;
     border:none;
     
-    
+   
 `
 
 export const ButtonRoll = () => {
@@ -17,7 +17,10 @@ export const ButtonRoll = () => {
     window.scrollTo(0, 0);
   }}
 >
-  <BsFillArrowUpCircleFill size={"30px"} color={"#1567A4"} />
+  <BsFillArrowUpCircleFill 
+  size={"30px"} 
+  color={"#1567A4"}
+  cursor={"pointer"} />
 </ButtonNavigate>
  )
 };

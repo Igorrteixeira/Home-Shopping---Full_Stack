@@ -22,17 +22,20 @@ export const Header = () => {
       <Nav>
         
         <AiOutlineHome
+          id="nav"
           size={"25px"}
           color={"white"}
           onClick={() => goToHome(navigate)}
         />
         <MdOutlineInventory
+          id="nav"
           size={"25px"}
           color={"white"}
           onClick={() => goToStock(navigate)}
         />
         {locate.pathname !== "/finalizepurchase" ? (
           <BsCart2
+            id="nav"
             size={"25px"}
             color={"white"}
             onClick={() => setSidebar(!sidebar)}

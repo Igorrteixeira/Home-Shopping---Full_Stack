@@ -1,4 +1,10 @@
 import { useContext } from "react";
+import { GlobalStateContext } from "../../global/GlobalStateContext";
+import { BsFillBagDashFill, BsFillBagPlusFill, BsTrash } from "react-icons/bs";
+import { Button } from "@mui/material";
+import { goToFianlizaPuchase } from "../../router/Coordinator";
+import { useNavigate } from "react-router-dom";
+import {addCart,removeCart,removeAll,} from "../../services/CartShoppingRequest";
 import {
   Container,
   ContainerButtons,
@@ -6,17 +12,8 @@ import {
   Card,
   Product,
   Values,
+  Total
 } from "./styled";
-import { GlobalStateContext } from "../../global/GlobalStateContext";
-import { BsFillBagDashFill, BsFillBagPlusFill, BsTrash } from "react-icons/bs";
-import { Button } from "@mui/material";
-import { goToFianlizaPuchase } from "../../router/Coordinator";
-import { useNavigate } from "react-router-dom";
-import {
-  addCart,
-  removeCart,
-  removeAll,
-} from "../../services/cartShoppingRequest";
 
 export const Cart = (props) => {
   const { cart } = useContext(GlobalStateContext);
@@ -33,6 +30,7 @@ export const Cart = (props) => {
           </Price>
           <ContainerButtons>
             <BsFillBagDashFill
+              cursor={"pointer"}
               size={"20px"}
               color={"#f56161"}
               onClick={() => removeCart(product.list.id)}
@@ -41,6 +39,7 @@ export const Cart = (props) => {
             />
             <p>{product.list.quantity}</p>
             <BsFillBagPlusFill
+              cursor={"pointer"}
               size={"20px"}
               color={"#3b8531"}
               onClick={() => addCart(product.list.id_product)}
@@ -49,6 +48,7 @@ export const Cart = (props) => {
             />
           </ContainerButtons>
           <BsTrash
+            cursor={"pointer"}
             color="red"
             onClick={() => removeAll(product.list.id_product)}
           />
@@ -68,7 +68,7 @@ export const Cart = (props) => {
             Finalizar
           </Button>
           {listCart}
-          <h2>TOTAL: R$ {amount.toFixed(2)}</h2>
+          <Total>TOTAL: R$ {amount.toFixed(2)}</Total>
         </Container>
       ) : (
         ""

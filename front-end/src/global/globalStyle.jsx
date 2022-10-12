@@ -14,6 +14,5 @@ export const GlobalStyle = createGlobalStyle`
       width: 200px;
       
     }
-   
-
+  
     `;

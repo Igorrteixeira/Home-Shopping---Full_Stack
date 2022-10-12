@@ -54,3 +54,6 @@ export const Values = styled.div`
   color: #181817;
   font-weight: bold;
 `;
+export const Total = styled.h2`
+ color: #1567a4;
+`

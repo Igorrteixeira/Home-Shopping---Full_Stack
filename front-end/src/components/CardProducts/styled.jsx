@@ -39,6 +39,15 @@ export const Button = styled.button`
   }};
   color: #ffffff;
   border-radius: 5px;
+  :hover{
+    background-color: ${(props) => {
+    if (props.color > 0) {
+      return "#092b44";
+    } else if (props.color <= 0) {
+      return "#c20d0ddc";
+    }
+  }};
+  }
 `;
 export const ContainerButtons = styled.div`
   display: flex;
@@ -69,8 +78,7 @@ export const Price = styled.p`
   font-weight: bolder;
   span {
     font-size: 14px;
-    color: #8a8e92;
-    
+    color: #8a8e92;  
   }
 `;
 

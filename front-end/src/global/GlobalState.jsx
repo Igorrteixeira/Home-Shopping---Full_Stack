@@ -10,7 +10,7 @@ export const GlobalState = (props) => {
     const[loader,setLoader] = useState(false)
     return (
         <div>
-        <GlobalStateContext.Provider value={{cart,setCart}}> 
+        <GlobalStateContext.Provider value={{cart,setCart,loader,setLoader}}> 
          {props.children}
          </GlobalStateContext.Provider> 
         </div>

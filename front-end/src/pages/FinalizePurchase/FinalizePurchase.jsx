@@ -1,3 +1,14 @@
+import { CardListCart } from "../../components/CardListCart/CardListCart";
+import { Header } from "../../components/Header/Header";
+import { BsFillCartCheckFill } from "react-icons/bs";
+import TextField from "@mui/material/TextField";
+import { Button } from "@mui/material";
+import { useForm } from "../../hooks/useForm";
+import { createOrder } from "../../services/orderRequest";
+import { Getcart } from "../../services/CartShoppingRequest";
+import { useContext } from "react";
+import { GlobalStateContext } from "../../global/GlobalStateContext";
+import {ButtonRoll} from "../../components/ButtonRoll/ButtonRoll"
 import {
   Container,
   TableProducts,
@@ -9,17 +20,6 @@ import {
   Produtos,
   ContainValues,
 } from "./styled";
-import { CardListCart } from "../../components/CardListCart/CardListCart";
-import { Header } from "../../components/Header/Header";
-import { BsFillCartCheckFill } from "react-icons/bs";
-import TextField from "@mui/material/TextField";
-import { Button } from "@mui/material";
-import { useForm } from "../../hooks/useForm";
-import { createOrder } from "../../services/orderRequest";
-import { Getcart } from "../../services/cartShoppingRequest";
-import { useContext } from "react";
-import { GlobalStateContext } from "../../global/GlobalStateContext";
-import {ButtonRoll} from "../../components/ButtonRoll/ButtonRoll"
 
 export const FinalizePurchase = () => {
   const { cart } = useContext(GlobalStateContext);
