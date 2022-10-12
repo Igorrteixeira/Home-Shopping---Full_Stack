@@ -7,11 +7,11 @@ export const Container = styled.div`
      background-repeat: no-repeat, repeat;
      background-size:100vw 100vh;
      background-color: opacity;
-     h1{
-        margin-top: 40px;
-        text-align: center;
-        color: #0d0d12;
-     }
+    margin-top: 8vh;
+    text-align: center;
+`
+export const Title = styled.h1`
+    padding-top: 30px;
 `
 export const Form = styled.form`
     display:flex;
@@ -21,7 +21,7 @@ export const Form = styled.form`
     gap: 15px;
 
     margin: 70px auto;
-    width: 350px;
+    width: 340px;
     height: 300px;
     background-color: #eadcdceb;
     border-radius: 5px;

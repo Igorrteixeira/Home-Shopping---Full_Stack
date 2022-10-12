@@ -6,9 +6,7 @@ import { Autheticator } from "../services/Authenticator";
 import { GenerateId } from "../services/GenerateId";
 import { HashManager } from "../services/HashManeger";
 
-
 export const userRouter = Router()
-
 export const userController = new UserController(
     new UserBusiness(
         new UserData(),

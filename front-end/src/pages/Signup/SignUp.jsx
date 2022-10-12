@@ -1,4 +1,4 @@
-import { Container,Form } from "./styled";
+import { Container,Form,Title } from "./styled";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -25,8 +25,7 @@ export const Signup = () => {
     
     <Container>
       <Header/>
-      
-      <h1>BEM-VINDO !</h1>
+      <Title>BEM-VINDO !</Title>
       <Form onSubmit={submit}>
         <TextField
           type="text"

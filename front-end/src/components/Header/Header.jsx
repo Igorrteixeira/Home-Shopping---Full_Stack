@@ -1,19 +1,26 @@
-import { Container, Nav } from "./styled";
 import { BsCart2 } from "react-icons/bs";
-import { MdOutlineInventory } from "react-icons/md";
-import { goToHome, goToStock } from "../../router/Coordinator";
-import { useNavigate } from "react-router-dom";
+import { MdOutlineInventory, MdKeyboardBackspace } from "react-icons/md";
 import { AiOutlineHome } from "react-icons/ai";
-import {Cart} from "../Cart/Cart"
+import { Cart } from "../Cart/Cart";
+import { goToHome, goToStock } from "../../router/Coordinator";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Container, Nav, Button, Logo } from "./styled";
+import logo from "../../assets/img/cart.png";
 
-export const Header = (props) => {
+export const Header = () => {
   const navigate = useNavigate();
-  const[sidebar,setSidebar] = useState(false)
+  const locate = useLocation();
+  const [sidebar, setSidebar] = useState(false);
 
   return (
     <Container>
+      <Logo onClick={()=>goToHome(navigate)}>
+        <h1>Home Shopping</h1>
+        <img src={logo} alt="" />
+      </Logo>
       <Nav>
+        
         <AiOutlineHome
           size={"25px"}
           color={"white"}
@@ -24,8 +31,18 @@ export const Header = (props) => {
           color={"white"}
           onClick={() => goToStock(navigate)}
         />
-        <BsCart2  size={"25px"} color={"white"} onClick={() =>setSidebar(!sidebar)} />
-        <Cart cart={sidebar}/>
+        {locate.pathname !== "/finalizepurchase" ? (
+          <BsCart2
+            size={"25px"}
+            color={"white"}
+            onClick={() => setSidebar(!sidebar)}
+          />
+        ) : (
+          <Button onClick={() => goToHome(navigate)}>
+            <MdKeyboardBackspace /> Voltar as compras{" "}
+          </Button>
+        )}
+        <Cart cart={sidebar} />
       </Nav>
     </Container>
   );

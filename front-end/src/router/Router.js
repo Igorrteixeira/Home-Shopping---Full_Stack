@@ -7,6 +7,7 @@ import { FinalizePurchase } from "../pages/FinalizePurchase/FinalizePurchase"
 
 
 
+
 export const Router = () => {
     return (
         <BrowserRouter>
@@ -16,6 +17,7 @@ export const Router = () => {
             <Route path="signup" element={<Signup/>}/>
             <Route path="stock" element={<Stock/>}/>
             <Route path="finalizepurchase" element={<FinalizePurchase/>}/>
+
             
 
         </Routes>

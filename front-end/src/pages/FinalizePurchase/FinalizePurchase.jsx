@@ -19,6 +19,7 @@ import { createOrder } from "../../services/orderRequest";
 import { Getcart } from "../../services/cartShoppingRequest";
 import { useContext } from "react";
 import { GlobalStateContext } from "../../global/GlobalStateContext";
+import {ButtonRoll} from "../../components/ButtonRoll/ButtonRoll"
 
 export const FinalizePurchase = () => {
   const { cart } = useContext(GlobalStateContext);
@@ -83,12 +84,13 @@ export const FinalizePurchase = () => {
       <TitleTable>
         <Produtos>Produtos</Produtos>
         <ContainValues>
-          <Values>Preço produto</Values>
-          <Values>Quantidade</Values>
+          <Values>Preço</Values>
+          <Values>Qtd</Values>
           <Values>Valor total</Values>
         </ContainValues>
       </TitleTable>
       <TableProducts>{listaitensCart}</TableProducts>
+      <ButtonRoll/>
     </Container>
   );
 };

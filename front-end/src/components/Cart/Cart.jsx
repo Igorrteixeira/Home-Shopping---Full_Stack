@@ -8,11 +8,15 @@ import {
   Values,
 } from "./styled";
 import { GlobalStateContext } from "../../global/GlobalStateContext";
-import { BsFillBagDashFill, BsFillBagPlusFill } from "react-icons/bs";
+import { BsFillBagDashFill, BsFillBagPlusFill, BsTrash } from "react-icons/bs";
 import { Button } from "@mui/material";
 import { goToFianlizaPuchase } from "../../router/Coordinator";
 import { useNavigate } from "react-router-dom";
-import { addCart, removeCart } from "../../services/cartShoppingRequest";
+import {
+  addCart,
+  removeCart,
+  removeAll,
+} from "../../services/cartShoppingRequest";
 
 export const Cart = (props) => {
   const { cart } = useContext(GlobalStateContext);
@@ -24,7 +28,9 @@ export const Cart = (props) => {
       <Card>
         <Product>{product.list.name}</Product>
         <Values>
-          <Price>R$ {product.list.price}</Price>
+          <Price>
+            <span>R$</span> {product.list.price}
+          </Price>
           <ContainerButtons>
             <BsFillBagDashFill
               size={"20px"}
@@ -42,6 +48,10 @@ export const Cart = (props) => {
               onMouseOut={({ target }) => (target.style.color = "#3b8531")}
             />
           </ContainerButtons>
+          <BsTrash
+            color="red"
+            onClick={() => removeAll(product.list.id_product)}
+          />
         </Values>
       </Card>
     );
@@ -51,14 +61,14 @@ export const Cart = (props) => {
     <>
       {props.cart === true ? (
         <Container>
-          {listCart}
-          <h2>TOTAL: R$ {amount}</h2>
           <Button
             variant="outlined"
             onClick={() => goToFianlizaPuchase(navigate)}
           >
             Finalizar
           </Button>
+          {listCart}
+          <h2>TOTAL: R$ {amount.toFixed(2)}</h2>
         </Container>
       ) : (
         ""

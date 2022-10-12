@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  margin-top: 10vh;
+`;
 
 export const TitleTable = styled.table`
   display: flex;
@@ -8,6 +10,10 @@ export const TitleTable = styled.table`
   width: 90vw;
   font-size: 25px;
   color: #091338;
+  @media screen and (min-device-width: 320px) and (max-device-width: 580px) {
+    font-size: 16px;
+    align-items: center;
+  }
 `;
 
 export const ContainValues = styled.div`
@@ -46,6 +52,10 @@ export const CheckPurchase = styled.div`
   justify-content: space-around;
   align-items: center;
   margin: 20px;
+  @media screen and (min-device-width: 320px) and (max-device-width: 580px) {
+    flex-direction: column;
+    font-size: 10px;
+  }
 `;
 export const Form = styled.form`
   display: flex;
@@ -53,5 +63,12 @@ export const Form = styled.form`
 
   input {
     width: 200px;
+  }
+  @media screen and (min-device-width: 481px) and (max-device-width: 1040px) {
+    flex-direction: column;
+  }
+  @media screen and (min-device-width: 320px) and (max-device-width: 580px) {
+    flex-direction: column;
+    margin: 30px;
   }
 `;

@@ -25,15 +25,3 @@ export interface ICreateOrderDTO {
   userName: string;
   deliveryDate: string;
 }
-
-export interface IUpdateOrderDTO {
-  token: string;
-  deliveryDate: string;
-}
-
-export interface OShoppingOrderDTO {
-  id: string;
-  name: string;
-  delivery_date: string;
-  user_id: string;
-}
