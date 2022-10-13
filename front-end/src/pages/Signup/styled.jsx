@@ -2,7 +2,7 @@ import styled from "styled-components"
 import fundo from "../../assets/img/online.png"
 
 export const Container = styled.div`
-    height: 99vh;
+    height: 92vh;
      background-image: url(${fundo});
      background-repeat: no-repeat, repeat;
      background-size:100vw 100vh;

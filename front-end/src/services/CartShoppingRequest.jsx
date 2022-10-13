@@ -35,15 +35,16 @@ export const addCart = (id) => {
 export const removeCart = (id) => {
   axios
     .delete(`${URL_BASE}/list/delete/${id}`, token)
-    .then((res) => {})
+    .then((res) => {
+      Getcart();
+    })
     .catch((error) => alert(error.response.data));
 };
 
 export const removeAll = (id) => {
   axios
     .delete(`${URL_BASE}/list/deleteall/${id}`, token)
-    .then((res) => {  
-    })
+    .then()
     .catch((error) => alert(error.response));
 };
 

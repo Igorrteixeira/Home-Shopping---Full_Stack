@@ -33,7 +33,7 @@ export const CardProduct = (props) => {
           />
          
          <Quantity>{props.quantity}</Quantity>
-          <BsFillBagPlusFill
+        <BsFillBagPlusFill
             cursor={"pointer"}
             size={"25px"}
             color={"#3b8531"}

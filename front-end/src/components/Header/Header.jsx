@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Tooltip } from "@mui/material";
 import { Container, Nav, Button, Logo, Icon } from "./styled";
-import { BsCart2 } from "react-icons/bs";
+import {BsCart3 } from "react-icons/bs";
 import { BiStore} from "react-icons/bi";
 import {
   MdOutlineInventory,
@@ -43,14 +43,15 @@ export const Header = () => {
         {locate.pathname !== "/finalizepurchase" ? (
           <Tooltip title="Carrinho">
             <Icon onClick={() => setSidebar(!sidebar)}>
-              <BsCart2 size={"25px"} color={"white"}/>
+              <BsCart3 size={"24px"} color={"white"}/>
             </Icon>
           </Tooltip>
         ) : (
           <Button onClick={() => goToHome(navigate)}>
-            <MdKeyboardBackspace /> Voltar as compras{" "}
+            <MdKeyboardBackspace /> Voltar as compras
           </Button>
-        )}
+        )
+        }
         <Tooltip title="Logout">
           <Icon onClick={()=>logout()}>
             <MdLogout size={"25px"} color={"white"} />

@@ -13,7 +13,10 @@ export const Container = styled.div`
 export const Nav = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 3vw;
+  justify-content: flex-end;
+  margin-right: 2vw;
+  width: 250px;
+  height: 7vh;
   gap: 10px;
 `;
 
@@ -26,7 +29,7 @@ export const Button = styled.button`
   background-color: white;
   color: #0b5287;
   border-radius: 20px;
-  padding: 5px;
+  padding: 5px 6px;
   width: 150px;
   :hover {
     background-color: #0b2940bb;
