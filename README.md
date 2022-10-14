@@ -1,5 +1,5 @@
 # 
-# Compras online Full-Stack
+# Teste Shopper Full-Stack
 
 ### Funcionalidades
 
@@ -33,5 +33,5 @@
 * password: 123456
 
 
-Deploy Front-end = http://home.shopping-bread.surge.sh
-Deploy Back-End = https://shopper-home-teste.herokuapp.com/
+* Deploy Front-end = http://home.shopping-bread.surge.sh
+* Deploy Back-End = https://shopper-home-teste.herokuapp.com/
