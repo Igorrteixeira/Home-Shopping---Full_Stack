@@ -28,7 +28,7 @@ export class ShoppingOrderBusiness {
       throw new CustomError(422, "Entre com todos parametros");
     }
     if (!validUser) {
-      throw new CustomError(401, "Não authorizado token inválido");
+      throw new CustomError(401, "Não autorizado token inválido");
     }
 
     const id = this.generateId.generateId();

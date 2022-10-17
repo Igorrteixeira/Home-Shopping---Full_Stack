@@ -1,3 +1,5 @@
+import { BsFillBagPlusFill, BsFillBagDashFill } from "react-icons/bs";
+import {Loader} from "../../components/Loader/Loader"
 import {
   Container,
   Button,
@@ -6,8 +8,6 @@ import {
   ContainerButtons,
   Quantity,
 } from "./styled";
-import { BsFillBagPlusFill, BsFillBagDashFill } from "react-icons/bs";
-import {Loader} from "../../components/Loader/Loader"
 
 export const CardProduct = (props) => {
   return (
