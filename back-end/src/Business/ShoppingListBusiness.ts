@@ -33,7 +33,6 @@ export class ShoppingListBusiness {
     if (String(products.id) === productId && products.qty_stock < 1) {
       throw new CustomError(404, "Produto indisponivel no momento");
     }
-
     const id = this.generateId.generateId();
     const newList = new ShoppingList(id, productId, userId);
 
