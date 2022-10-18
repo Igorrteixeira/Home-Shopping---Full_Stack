@@ -77,9 +77,9 @@ export const FinalizePurchase = () => {
             value={form.deliveryDate}
             required
           />
-          <Button variant="contained" type="submit">
+          {listaitensCart.length < 1 ? <Button variant="contained" onClick={()=>alert("Você precisa adicionar produtos a lista")}>Finalizar compra</Button>:<Button variant="contained" type="submit">
             Finalizar compra
-          </Button>
+          </Button>}
         </Form>
       </CheckPurchase>
       {listaitensCart.length < 1 ? <h2>Você ainda não possui itens no carrinho.</h2>:
