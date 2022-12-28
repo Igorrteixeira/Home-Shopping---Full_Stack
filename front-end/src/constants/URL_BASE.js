@@ -1,4 +1,4 @@
-export const URL_BASE = "https://shopper-home-teste.herokuapp.com"
+export const URL_BASE = "https://home-shooping.onrender.com"
 
 export const token = {
     headers: {
